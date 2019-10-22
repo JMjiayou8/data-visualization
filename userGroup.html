@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>用户群分析</title>
+    <link rel="stylesheet" href="./assets/styles/common.css" />
+  </head>
+  <body>
+    <div class="normal-page">
+      <div class="page-title">用户群分析</div>
+      <div class="top-wrap clearfix">
+        <div class="normal-btn fl">畅越用户201909</div>
+        <div class="normal-btn blue fr">+ 对比用户群</div>
+      </div>
+      <div class="page-body clearfix">
+        <div class="normal-part per2">
+          <div class="part-title-wrap">
+            <p class="part-title">健康度分析</p>
+            <p class="sub-title">2019-10(月)</p>
+          </div>
+          <div class="part-body">
+            <div id="chart1" style="width: 100%;height: 280px;"></div>
+            <ul class="chart-extra-legend">
+              <li>总用户数:<span class="legend-num">347人</span></li>
+              <li>高稳定度:<span class="legend-num">55.85%</span></li>
+              <li>中稳定度:<span class="legend-num">32.56%</span></li>
+              <li>低稳定度:<span class="legend-num">11.59%</span></li>
+            </ul>
+          </div>
+        </div>
+        <div class="normal-part per2">
+          <div class="part-title-wrap">
+            <p class="part-title">产品分析</p>
+            <p class="sub-title">2019-10(月)</p>
+          </div>
+          <div class="part-body">
+            <div id="chart2" style="width: 100%;height: 280px;"></div>
+          </div>
+        </div>
+        <div class="normal-part per1">
+          <div class="normal-tab">
+            <div class="tab-head-wrap">
+              <div class="tab-head-content clearfix">
+                <div class="tab-head-item active" relativeChart="chart31">
+                  <span>ARPU值分析</span>
+                </div>
+                <div class="tab-head-item" relativeChart="chart32">
+                  <span>DOU分析</span>
+                </div>
+              </div>
+            </div>
+            <div class="tab-body-wrap">
+              <div class="tab-body-content">
+                <div class="tab-pane" id="tab-pane1">
+                  <p class="tab-pane-info">
+                    均值<span class="info-num">48.37</span>元
+                  </p>
+                  <div id="chart31" style="width:100%;height:280px;"></div>
+                </div>
+                <div class="tab-pane" id="tab-pane2" style="display:none;">
+                  <p class="tab-pane-info">
+                    均值<span class="info-num">28.37</span>元
+                  </p>
+                  <div id="chart32" style="width:100%;height:280px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="normal-part per1">
+          <div class="part-title-wrap">
+            <p class="part-title">离网率</p>
+            <p class="sub-title">综合分析</p>
+          </div>
+          <div class="part-body">
+            <div id="chart4" style="width: 100%;height: 280px;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/jquery-3.2.1.min.js"></script>
+    <script src="./js/echarts/echarts.js"></script>
+    <script>
+      $(function() {
+        rendChart1()
+        rendChart2()
+        rendChart31()
+        rendChart32()
+        rendChart4()
+      })
+      var chart1, chart2, chart31, chart32, chart4
+      $('.tab-head-item').click(function() {
+        $('.tab-head-item').removeClass('active')
+        $(this).addClass('active')
+        $('.tab-pane').toggle()
+        switch ($(this).attr('relativeChart')) {
+          case 'chart31':
+            rendChart31()
+            break
+          case 'chart32':
+            rendChart32()
+            break
+          default:
+            rendChart31()
+            break
+        }
+      })
+      function rendChart1() {
+        if (chart1 != null && chart1 != '' && chart1 != undefined) {
+          chart1.dispose() //销毁
+        }
+        chart1 = echarts.init(document.getElementById('chart1'))
+        var option = {
+          color: ['#69c0fe', '#6084fd', '#8abe78'],
+          series: [
+            {
+              name: '访问来源',
+              type: 'pie',
+              radius: ['30%', '80%'],
+              center: ['35%', '50%'],
+              // avoidLabelOverlap: false,
+              data: [
+                { value: 335, name: '高稳定度' },
+                { value: 310, name: '中稳定度' },
+                { value: 234, name: '低稳定度' }
+              ],
+              label: {
+                color: '#666',
+                formatter(obj) {
+                  return obj.name + '\n' + obj.percent + '%'
+                }
+              }
+            }
+          ]
+        }
+        chart1.setOption(option)
+      }
+      function rendChart2() {
+        if (chart2 != null && chart2 != '' && chart2 != undefined) {
+          chart2.dispose() //销毁
+        }
+        chart2 = echarts.init(document.getElementById('chart2'))
+        var option = {
+          color: [
+            '#f9383b',
+            '#ffbf44',
+            '#ffdc00',
+            '#1ada6f',
+            '#0092f1',
+            '#12d0d2'
+          ],
+          series: [
+            {
+              name: '产品分析',
+              type: 'pie',
+              radius: ['50%', '80%'],
+              center: ['50%', '50%'],
+
+              data: [
+                { value: 335, name: '大王卡' },
+                { value: 310, name: '天王卡' },
+                { value: 234, name: '畅悦冰淇淋79元' },
+                { value: 335, name: '畅悦冰淇淋99元' },
+                { value: 310, name: '智慧沃家' },
+                { value: 234, name: '小王卡' }
+              ],
+              label: {
+                color: '#666',
+                formatter(obj) {
+                  return obj.name + '\n' + obj.percent + '%'
+                }
+              }
+            }
+          ]
+        }
+        chart2.setOption(option)
+      }
+      function rendChart31() {
+        if (chart31 != null && chart31 != '' && chart31 != undefined) {
+          chart31.dispose() //销毁
+        }
+        chart31 = echarts.init(document.getElementById('chart31'))
+        var option = {
+          color: ['#0092f1'],
+          legend: {
+            right: 0,
+            itemWidth: 14,
+            itemHeight: 2
+          },
+          grid: {
+            left: 50,
+            right: 10,
+            top: 50,
+            bottom: 20
+          },
+          xAxis: {
+            type: 'category',
+            data: [
+              '0-10元',
+              '10-20元',
+              '20-30元',
+              '30-40元',
+              '40-50元',
+              '50-60元',
+              '60-70元'
+            ],
+            axisLine: {
+              lineStyle: {
+                color: '#999999'
+              }
+            },
+            axisTick: {
+              lineStyle: {
+                color: '#999999'
+              }
+            },
+            axisLabel: {
+              color: '#999999'
+            }
+          },
+          yAxis: {
+            type: 'value',
+            axisLine: { show: false },
+            axisTick: { show: false },
+            axisLabel: {
+              color: '#999999'
+            },
+            splitLine: {
+              lineStyle: {
+                type: 'dashed'
+              }
+            }
+          },
+          series: [
+            {
+              name: 'ARPR值',
+              data: [820, 932, 901, 934, 1290, 1330, 1320],
+              type: 'bar',
+              barWidth: 30,
+              itemStyle: {
+                barBorderRadius: [5, 5, 0, 0]
+              }
+            }
+          ]
+        }
+        chart31.setOption(option)
+      }
+      function rendChart32() {
+        if (chart32 != null && chart32 != '' && chart32 != undefined) {
+          chart32.dispose() //销毁
+        }
+        chart32 = echarts.init(document.getElementById('chart32'))
+        var option = {
+          color: ['#0092f1'],
+          legend: {
+            right: 0,
+            itemWidth: 14,
+            itemHeight: 2
+          },
+          grid: {
+            left: 50,
+            right: 10,
+            top: 50,
+            bottom: 20
+          },
+          xAxis: {
+            type: 'category',
+            data: [
+              '0-10元',
+              '10-20元',
+              '20-30元',
+              '30-40元',
+              '40-50元',
+              '50-60元',
+              '60-70元'
+            ],
+            axisLine: {
+              lineStyle: {
+                color: '#999999'
+              }
+            },
+            axisTick: {
+              lineStyle: {
+                color: '#999999'
+              }
+            },
+            axisLabel: {
+              color: '#999999'
+            }
+          },
+          yAxis: {
+            type: 'value',
+            axisLine: { show: false },
+            axisTick: { show: false },
+            axisLabel: {
+              color: '#999999'
+            },
+            splitLine: {
+              lineStyle: {
+                type: 'dashed'
+              }
+            }
+          },
+          series: [
+            {
+              name: 'ARPR值',
+              data: [82, 332, 101, 734, 190, 130, 320],
+              type: 'bar',
+              barWidth: 30,
+              itemStyle: {
+                barBorderRadius: [5, 5, 0, 0]
+              }
+            }
+          ]
+        }
+        chart32.setOption(option)
+      }
+      function rendChart4() {
+        if (chart4 != null && chart4 != '' && chart4 != undefined) {
+          chart4.dispose() //销毁
+        }
+        chart4 = echarts.init(document.getElementById('chart4'))
+        var option = (option = {
+          color: ['#1ada6f'],
+          grid: {
+            left: 50,
+            right: 10,
+            top: 20,
+            bottom: 20
+          },
+          xAxis: {
+            type: 'category',
+            data: ['4月', '5月', '6月', '7月', '8月', '9月', '10月'],
+            axisLine: {
+              lineStyle: {
+                color: '#999999'
+              }
+            },
+            axisTick: {
+              lineStyle: {
+                color: '#999999'
+              }
+            },
+            axisLabel: {
+              color: '#999999'
+            }
+          },
+          yAxis: {
+            type: 'value',
+            axisLine: { show: false },
+            axisTick: { show: false },
+            axisLabel: {
+              color: '#999999'
+            },
+            splitLine: {
+              lineStyle: {
+                type: 'dashed'
+              }
+            }
+          },
+          series: [
+            {
+              data: [820, 932, 901, 934, 1290, 1330, 1320],
+              type: 'line',
+              symbol: 'circle',
+              symbolSize: 10
+            }
+          ]
+        })
+        chart4.setOption(option)
+      }
+    </script>
+  </body>
+</html>
