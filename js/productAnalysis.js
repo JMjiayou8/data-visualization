@@ -119,34 +119,51 @@ function rendChart3 () {
   }
   chart3 = echarts.init(document.getElementById('chart31'))
   var option = {
-    color: [
-      '#f9383b',
-      '#ffbf44',
-      '#ffdc00',
-      '#1ada6f',
-      '#0092f1',
-      '#12d0d2'
-    ],
+    backgroundColor: '#fff',
+    visualMap: {
+      type: 'piecewise',
+      right: '10%',
+      y: 'middle',
+      align: 'left',
+      itemWidth: 35,
+      itemHeight: 10,
+      pieces: [
+        { min: 50, label: '高', color: '#ee615f' },
+        { min: 10, max: 50, label: '中', color: '#ffa029' },
+        { max: 10, label: '低', color: '#6bbe52' }
+      ]
+    },
     series: [
       {
         name: '产品分析',
         type: 'pie',
-        radius: ['50%', '80%'],
+        radius: ['40%', '80%'],
         center: ['50%', '50%'],
-
+        minAngle: 30,
         data: [
-          { value: 335, name: '大王卡' },
-          { value: 310, name: '天王卡' },
-          { value: 234, name: '畅悦冰淇淋79元' },
-          { value: 335, name: '畅悦冰淇淋99元' },
-          { value: 310, name: '智慧沃家' },
-          { value: 234, name: '小王卡' }
-        ],
+          { "name": "兰州", "value": 25 },
+          { "name": "嘉峪关", "value": 2 },
+          { "name": "金昌", "value": 44 },
+          { "name": "白银", "value": 6 },
+          { "name": "天水", "value": 8 },
+          { "name": "武威", "value": 57 },
+          { "name": "张掖", "value": 15 },
+          { "name": "酒泉", "value": 64 },
+          { "name": "平凉", "value": 24 },
+          { "name": "庆阳", "value": 16 },
+          { "name": "定西", "value": 23 },
+          { "name": "陇南", "value": 7 }
+        ].sort(function (a, b) { return a.value - b.value }),
         label: {
-          color: '#666',
+          color: '#fff',
+          position: 'inside',
           formatter (obj) {
-            return obj.name + '\n' + obj.percent + '%'
+            return obj.name
           }
+        },
+        itemStyle: {
+          borderColor: '#fff',
+          borderWidth: 4
         }
       }
     ]
@@ -160,49 +177,95 @@ function rendChart41 () {
   $('#chart41').css('width', width + 'px')
   chart41 = echarts.init(document.getElementById('chart41'))
   var option = (option = {
-    color: ['#1ada6f'],
     grid: {
-      left: 50,
-      right: 10,
+      left: 100,
+      right: 100,
       top: 20,
       bottom: 20
     },
     xAxis: {
-      type: 'category',
-      data: ['4月', '5月', '6月', '7月', '8月', '9月', '10月'],
+      type: 'value',
+      min: 0,
+      max: 100,
+      splitNumber: 10,
+      axisLabel: {
+        color: '#999',
+        formatter: function (name) {
+          return name + '%'
+        }
+      },
+      splitLine: { show: false },
       axisLine: {
         lineStyle: {
-          color: '#999999'
+          color: '#999'
         }
+      }
+    },
+    yAxis: [{
+      type: "category",
+      inverse: false,
+      data: ["60以上", "50-60", "40-50", "30-40", "20-30", '10-20'],
+      axisLine: {
+        show: false
       },
       axisTick: {
-        lineStyle: {
-          color: '#999999'
-        }
-      },
-      axisLabel: {
-        color: '#999999'
-      }
-    },
-    yAxis: {
-      type: 'value',
-      axisLine: { show: false },
-      axisTick: { show: false },
-      axisLabel: {
-        color: '#999999'
+        show: false
       },
       splitLine: {
-        lineStyle: {
-          type: 'dashed'
+        show: false,
+      },
+      axisLabel: {
+        margin: 35,
+        textStyle: {
+          color: "#999",
+          fontSize: 14,
         }
+
       }
-    },
+    }
+    ],
     series: [
       {
-        data: [820, 932, 901, 934, 1290, 1330, 1320],
-        type: 'line',
-        symbol: 'circle',
-        symbolSize: 10
+        z: 4,
+        type: "pictorialBar",
+        symbolSize: ['30', '30'],
+        symbolRepeat: "fixed",
+        symbol: echartsConfig.barImg,
+        itemStyle: {
+          opacity: 0.5
+        },
+        data: [1, 1, 1, 1, 1, 1],
+      }, {
+        z: 6,
+        type: "pictorialBar",
+        symbolSize: ['30', '30'],
+        animation: true,
+        symbol: echartsConfig.barImg,
+        symbolRepeat: "fixed",
+        symbolClip: true,
+        symbolPosition: "start",
+        symbolOffset: [0, 0],
+        itemStyle: {
+          opacity: 1
+        },
+        label: {
+          normal: {
+            show: true,
+            textStyle: {
+              color: '#ec3d20',
+              fontSize: 14,
+              fontWeight: 500
+
+            },
+            formatter: function (obj) {
+              return obj.value + '%'
+            },
+            position: "right",
+            offset: [35, 0]
+
+          }
+        },
+        data: [13.9, 25.2, 31, 19, 28.1, 4]
       }
     ]
   })
