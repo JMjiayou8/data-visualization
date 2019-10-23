@@ -8,13 +8,13 @@ $(function () {
     },
     { name: '订购量', data: [19325, 23438, 31000, 121594, 134141] }
   ]
-  rendHorizontalBarChart('chart1', legendData, yAxisData, data)
+  rendHorizontalBarChart('chart1', legendData, yAxisData, data, width, 1.7)
   var pieData1 = [
     { value: 335, name: '高稳定度' },
     { value: 310, name: '中稳定度' },
     { value: 234, name: '低稳定度' }
   ]
-  rendHealthyPieChart('chart2', pieData1)
+  rendHealthyPieChart('chart2', pieData1, 98)
   var productData = [
     { value: 335, name: '大王卡' },
     { value: 310, name: '天王卡' },

@@ -8,13 +8,13 @@ $(function () {
     },
     { name: '订购量', data: [19325, 23438, 31000, 121594, 134141] }
   ]
-  rendHorizontalBarChart('chart1', legendData, yAxisData, data)
+  rendHorizontalBarChart('chart1', legendData, yAxisData, data, 1.2)
   var data = [
     { value: 335, name: '高稳定度' },
     { value: 310, name: '中稳定度' },
     { value: 234, name: '低稳定度' }
   ]
-  rendHealthyPieChart('chart2', data)
+  rendHealthyPieChart('chart2', data, 97)
   var pieWidth = $('#chart2').width()
   var pieData1 = [
     { "name": "兰州", "value": 25 },
@@ -30,7 +30,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart31', pieData1, pieWidth)
+  rendSplitPieChart('chart31', pieData1, pieWidth, 8.26)
   var pieData2 = [
     { "name": "兰州", "value": 25 },
     { "name": "嘉峪关", "value": 2 },
@@ -45,7 +45,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart32', pieData2, pieWidth)
+  rendSplitPieChart('chart32', pieData2, pieWidth, 9)
   var pieData3 = [
     { "name": "兰州", "value": 25 },
     { "name": "嘉峪关", "value": 2 },
@@ -60,7 +60,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart33', pieData3, pieWidth)
+  rendSplitPieChart('chart33', pieData3, pieWidth, 10)
   var pieData4 = [
     { "name": "兰州", "value": 25 },
     { "name": "嘉峪关", "value": 2 },
@@ -75,7 +75,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart34', pieData4, pieWidth)
+  rendSplitPieChart('chart34', pieData4, pieWidth, 11)
   var pieData5 = [
     { "name": "兰州", "value": 25 },
     { "name": "嘉峪关", "value": 2 },
@@ -90,7 +90,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart35', pieData5, pieWidth)
+  rendSplitPieChart('chart35', pieData5, pieWidth, 12)
   var xAxisData1 = ['4月', '5月', '6月', '7月', '8月', '9月', '10月']
   var barData1 = [20, 92, 1, 4, 90, 10, 20]
   rendPicBarChart('chart41', xAxisData1, barData1, width)
@@ -98,6 +98,8 @@ $(function () {
   var barData2 = [2, 12, 16, 4, 10, 50, 23]
   rendPicBarChart('chart42', xAxisData2, barData2, width)
 })
+
+
 
 
 

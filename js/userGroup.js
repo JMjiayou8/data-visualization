@@ -5,7 +5,7 @@ $(function () {
     { value: 310, name: '中稳定度' },
     { value: 234, name: '低稳定度' }
   ]
-  rendHealthyPieChart('chart1', data)
+  rendHealthyPieChart('chart1', data, 88)
   var productData = [
     { value: 335, name: '大王卡' },
     { value: 310, name: '天王卡' },
