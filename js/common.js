@@ -18,24 +18,26 @@ $('.tab-item').click(function () {
 
 // 时间轴区域
 var curMonthIndex;
+var curMonth = new Date().getMonth()
 function rendTimeLine (cur) {
   curMonthIndex = cur;
-  var timeTemplate = '<li class="timeLine-item {active}" onclick="clickTimeLine({index})"><p>{month}</p><i></i></li>'
+  var timeTemplate = '<li class="timeLine-item {active}" {onclick} ><p>{month}</p><i></i></li>'
   var arr = []
   for (var i = 0; i < 12; i++) {
-    arr.push(timeTemplate.replace(/\{month\}/g, new Date().getFullYear() + '-' + (i < 9 ? '0' + (i + 1) : i + 1)).replace(/\{index\}/g, + i).replace(/\{active\}/g, i == cur ? 'active' : ''))
+    var month = new Date().getFullYear() + '-' + (i < 9 ? '0' + (i + 1) : i + 1)
+    arr.push(timeTemplate.replace(/\{month\}/g, month).replace(/\{index\}/g, + i).replace(/\{active\}/g, i == cur ? 'active' : '')
+      .replace(/\{onclick\}/g, i > curMonth ? '' : 'onclick="clickTimeLine(' + i + ',\'' + month + '\')"'))
   }
   $('.timeLine-slide').html(arr.join(''))
 }
 function prevTime () {
-  curMonthIndex = (curMonthIndex + 11) % 12;
+  curMonthIndex = (curMonthIndex + curMonth) % (curMonth + 1);
   rendTimeLine(curMonthIndex)
 }
 function nextTime () {
-  curMonthIndex = (curMonthIndex + 1) % 12;
+  curMonthIndex = (curMonthIndex + 1) % (curMonth + 1);
   rendTimeLine(curMonthIndex)
 }
-
 
 // 全局图标设置
 var echartsConfig = {

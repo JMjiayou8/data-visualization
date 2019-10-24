@@ -101,7 +101,8 @@ $(function () {
 })
 
 // 时间轴点击事件
-function clickTimeLine (i) {
+function clickTimeLine (i, month) {
+  console.log(i, month)
   rendTimeLine(i)
   //todo 数据操作
 }

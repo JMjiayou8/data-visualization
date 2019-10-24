@@ -566,14 +566,14 @@ body {
 }
 
 
-.timeLine-item:hover p,
+/* .timeLine-item:hover p, */
 .timeLine-item.active p {
   font-size: 16px;
   line-height: 20px;
   color: #666;
 }
 
-.timeLine-item:hover i,
+/* .timeLine-item:hover i, */
 .timeLine-item.active i {
   background: #ff9f0e;
   border-color: #ff9f0e;
