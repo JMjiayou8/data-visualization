@@ -7,18 +7,34 @@ $('.tab-head-item').click(function () {
   let paneBody = $(this).attr('role')
   $('#tab-' + paneBody).show()
 })
-//时间线
-$('.timeLine-item').click(function () {
-  var parent = $(this).parents('.timeLine-wrapper')
-  parent.find('.timeLine-item').removeClass('active')
-  $(this).addClass('active')
-})
+
+
 //按钮式tab
 $('.tab-item').click(function () {
   var parent = $(this).parents('.normal-btn-tab')
   parent.find('.tab-item').removeClass('active')
   $(this).addClass('active')
 })
+
+// 时间轴区域
+var curMonthIndex;
+function rendTimeLine (cur) {
+  curMonthIndex = cur;
+  var timeTemplate = '<li class="timeLine-item {active}" onclick="clickTimeLine({index})"><p>{month}</p><i></i></li>'
+  var arr = []
+  for (var i = 0; i < 12; i++) {
+    arr.push(timeTemplate.replace(/\{month\}/g, new Date().getFullYear() + '-' + (i < 9 ? '0' + (i + 1) : i + 1)).replace(/\{index\}/g, + i).replace(/\{active\}/g, i == cur ? 'active' : ''))
+  }
+  $('.timeLine-slide').html(arr.join(''))
+}
+function prevTime () {
+  curMonthIndex = (curMonthIndex + 11) % 12;
+  rendTimeLine(curMonthIndex)
+}
+function nextTime () {
+  curMonthIndex = (curMonthIndex + 1) % 12;
+  rendTimeLine(curMonthIndex)
+}
 
 
 // 全局图标设置

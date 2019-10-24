@@ -1,4 +1,5 @@
 $(function () {
+  rendTimeLine(9);//初始化时间轴区域
   var width = $('#chart1').width()
   var legendData = ['推送量', '订购量']
   var yAxisData = ['CBSS', 'ESS', '微信', '外呼', '短信']
@@ -99,6 +100,11 @@ $(function () {
   rendPicBarChart('chart42', xAxisData2, barData2, width)
 })
 
+// 时间轴点击事件
+function clickTimeLine (i) {
+  rendTimeLine(i)
+  //todo 数据操作
+}
 
 
 
