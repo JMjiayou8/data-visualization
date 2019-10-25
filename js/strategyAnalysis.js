@@ -43,5 +43,13 @@ function clickTimeLine (i, month) {
   //todo 数据操作
 }
 
+function toOtherPage () {
+  var param = {
+    a: 1,
+    b: 2
+  }
+  window.location.href = 'https://www.baidu.com' + '?' + setUrlParam(param)
+}
+
 
 
