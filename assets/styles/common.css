@@ -18,6 +18,10 @@ i {
   font-style: normal;
 }
 
+a {
+  text-decoration: none;
+}
+
 /* 公共样式类 */
 html,
 body {

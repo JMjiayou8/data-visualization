@@ -317,7 +317,7 @@ function rendHorizontalBarChart (id, legendData, yAxisData, data, totalNum) {
   chart5.setOption(option)
 }
 // 分隔式饼图
-function rendSplitPieChart (id, data, width, totalNum) {
+function rendSplitPieChart (id, data, width, totalNum, minValue, maxValue) {
   var chart6 = echarts.init(document.getElementById(id))
   $('#' + id).width(width + 'px')
 
@@ -356,9 +356,9 @@ function rendSplitPieChart (id, data, width, totalNum) {
       itemWidth: 35,
       itemHeight: 10,
       pieces: [
-        { min: 50, label: '高', color: '#ee615f' },
-        { min: 10, max: 50, label: '中', color: '#ffa029' },
-        { max: 10, label: '低', color: '#6bbe52' }
+        { min: maxValue, label: '高', color: '#ee615f' },
+        { min: minValue, max: maxValue, label: '中', color: '#ffa029' },
+        { max: minValue, label: '低', color: '#6bbe52' }
       ]
     },
     series: [
@@ -489,4 +489,54 @@ function rendPicBarChart (id, yAxisData, data, width) {
   }
   chart7.setOption(option)
   chart7.resize()
+}
+
+
+/**
+ * 获取url参数
+ * @param {*} url 
+ * getUrlParam('?saleId=lwac00&&saleName=%E8%AF%BB%E4%B9%A6%E9%80%81%E6%B5%81%E9%87%8F')======>>>{saleId: "lwac00", saleName: "读书送流量"}
+ */
+function getUrlParam (url) {
+  var searchUrl = (url || location.search).substr(1);
+  var paramObj = {}
+  if (searchUrl) {
+    var arr = searchUrl.split('&&');
+    for (var i = 0; i < arr.length; i++) {
+      var a = arr[i].split('=')
+      paramObj[decodeURI(a[0])] = decodeURI(a[1])
+    }
+  }
+  return paramObj
+}
+function toQueryPair (key, value) {
+  if (typeof value == 'undefined') {
+    return key;
+  }
+  return key + '=' + encodeURIComponent(value === null ? '' : String(value));
+}
+/**
+ * 拼接url参数
+ * @param {*} param 
+ * setUrlParam({a:1,b:2})=====>"a=1&&b=2"
+ */
+function setUrlParam (param) {
+  var arr = []
+  if (param) {
+    for (var key in param) {
+      key = encodeURIComponent(key);
+      var values = param[key];
+      if (values && values.constructor == Array) {//数组
+        var queryValues = [];
+        for (var i = 0, len = values.length, value; i < len; i++) {
+          value = values[i];
+          queryValues.push(toQueryPair(key, value));
+        }
+        arr = arr.concat(queryValues);
+      } else { //字符串
+        arr.push(toQueryPair(key, values));
+      }
+    }
+  }
+  return arr.join('&&')
 }

@@ -31,7 +31,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart31', pieData1, pieWidth, 8.26)
+  rendSplitPieChart('chart31', pieData1, pieWidth, 8.26, 10, 50)
   var pieData2 = [
     { "name": "兰州", "value": 25 },
     { "name": "嘉峪关", "value": 2 },
@@ -46,7 +46,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart32', pieData2, pieWidth, 9)
+  rendSplitPieChart('chart32', pieData2, pieWidth, 9, 10, 50)
   var pieData3 = [
     { "name": "兰州", "value": 25 },
     { "name": "嘉峪关", "value": 2 },
@@ -61,7 +61,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart33', pieData3, pieWidth, 10)
+  rendSplitPieChart('chart33', pieData3, pieWidth, 10, 10, 50)
   var pieData4 = [
     { "name": "兰州", "value": 25 },
     { "name": "嘉峪关", "value": 2 },
@@ -76,7 +76,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart34', pieData4, pieWidth, 11)
+  rendSplitPieChart('chart34', pieData4, pieWidth, 11, 10, 50)
   var pieData5 = [
     { "name": "兰州", "value": 25 },
     { "name": "嘉峪关", "value": 2 },
@@ -91,7 +91,7 @@ $(function () {
     { "name": "定西", "value": 23 },
     { "name": "陇南", "value": 7 }
   ].sort(function (a, b) { return a.value - b.value })
-  rendSplitPieChart('chart35', pieData5, pieWidth, 12)
+  rendSplitPieChart('chart35', pieData5, pieWidth, 12, 10, 50)
   var xAxisData1 = ['4月', '5月', '6月', '7月', '8月', '9月', '10月']
   var barData1 = [20, 92, 1, 4, 90, 10, 20]
   rendPicBarChart('chart41', xAxisData1, barData1, width)
@@ -106,8 +106,4 @@ function clickTimeLine (i, month) {
   rendTimeLine(i)
   //todo 数据操作
 }
-
-
-
-
 
