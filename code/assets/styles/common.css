@@ -1,0 +1,702 @@
+/* reset 浏览器默认 */
+body,
+html,
+div,
+p,
+ul,
+li,
+ol {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+i {
+  font-style: normal;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* 公共样式类 */
+html,
+body {
+  font-family: "MicrosoftYaHei";
+  font-size: 16px;
+  color: #999;
+}
+
+.clearfix {
+  overflow: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.normal-btn {
+  font-size: 14px;
+  color: #fff;
+  border-radius: 5px;
+  background-color: rgb(255, 159, 14);
+  line-height: 30px;
+  height: 30px;
+  padding: 0 20px;
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+
+.normal-btn.blue {
+  background-color: #5ca0e4;
+}
+
+.normal-btn.success {
+  background-color: #52b776;
+}
+
+.normal-btn.error {
+  background-color: #afb2b0;
+}
+
+.normal-btn.small {
+  line-height: 24px;
+  height: 24px;
+  font-size: 12px;
+  padding: 0 10px;
+}
+
+.normal-btn.search {
+  background-image: url('../icons/search.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 14px;
+}
+
+.normal-btn-tab {
+  display: inline-block;
+  border-radius: 5px;
+  border: 1px solid #e1e1e1;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.normal-btn-tab .tab-item {
+  display: inline-block;
+  color: #333;
+  font-size: 12px;
+  line-height: 30px;
+  height: 30px;
+  padding: 0 10px;
+}
+
+.tab-item.active {
+  background: #ff9f0e;
+  color: #fff;
+}
+
+/* 公共布局 */
+.normal-page {
+  padding: 20px;
+  background: #f1f3f7;
+}
+
+.page-title {
+  font-size: 18px;
+  color: #666;
+  line-height: 20px;
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.page-title::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  border: 3px solid rgb(242, 146, 23);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  position: absolute;
+  top: 2px;
+  left: 0;
+}
+
+.top-wrap {
+  margin-bottom: 20px;
+  text-align: right;
+}
+
+.normal-part {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 2px 3px 0px rgba(158, 158, 158, 0.6);
+  padding: 20px;
+  box-sizing: border-box;
+  float: left;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.normal-part.per1 {
+  width: 100%;
+}
+
+.normal-part.per2 {
+  width: 49%;
+}
+
+.normal-part.per3 {
+  width: 33%;
+}
+
+.normal-part.per4 {
+  width: 24%;
+}
+
+.normal-part.per2+.per2 {
+  margin-left: 2%;
+}
+
+.normal-part.per3:nth-child(3n),
+.normal-part.per3:nth-child(3n+2) {
+  margin-left: 0.5%;
+}
+
+
+.normal-part.per4:nth-child(4n),
+.normal-part.per4:nth-child(4n+2),
+.normal-part.per4:nth-child(4n+3) {
+  margin-left: 1.3%;
+}
+
+.part-title-wrap {
+  margin-bottom: 10px;
+}
+
+.part-title {
+  font-size: 18px;
+  color: #ff9f0e;
+  line-height: 20px;
+  margin-bottom: 10px;
+}
+
+.sub-title {
+  font-size: 14px;
+  color: #666;
+}
+
+.part-title-right {
+  color: #333;
+  font-size: 14px;
+}
+
+.part-title-right span {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.part-title-right .num {
+  color: #ff9f0e;
+  font-size: 16px;
+}
+
+.part-title-right .unit {
+  font-size: 14px;
+}
+
+.part-body {
+  position: relative;
+}
+
+/* tab区域 */
+.tab-head-wrap {
+  border-bottom: 2px solid rgb(255, 159, 14);
+}
+
+.tab-head-wrap .tab-head-content {
+  margin-bottom: -2px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.tab-head-wrap .tab-head-item {
+  font-size: 18px;
+  color: #999;
+  width: 150px;
+  line-height: 50px;
+  text-align: center;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px 5px 0 0;
+  display: inline-block;
+}
+
+.tab-head-item.active {
+  color: #ff9f0e;
+  border-color: #ff9f0e;
+  border-bottom-color: #fff;
+}
+
+/**************************************** 用户群页面 ****************************************/
+.chart-extra-legend {
+  font-size: 14px;
+  color: #666;
+  position: absolute;
+  right: 0;
+  top: 20%;
+  line-height: 20px;
+}
+
+.chart-extra-legend li {
+  margin-bottom: 20px;
+}
+
+.chart-extra-legend .legend-num {
+  font-size: 16px;
+  color: #ff9f0e;
+  margin-left: 5px;
+}
+
+
+
+.tab-pane-info {
+  font-size: 16px;
+  color: #999;
+  line-height: 20px;
+  margin: 20px 0;
+}
+
+.tab-pane-info .info-num {
+  font-size: 18px;
+  color: #ff9f0e;
+}
+
+/**************************************** 策略总览页面 ****************************************/
+.rate {
+  font-size: 12px;
+  color: rgb(153, 153, 153);
+  line-height: 18px;
+}
+
+.rate span {
+  position: relative;
+  padding-left: 15px;
+  line-height: 18px;
+  margin-left: 5px;
+}
+
+.rate .up {
+  color: #eb4a4a;
+}
+
+.rate .up::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-width: 0 5px 10px 5px;
+  border-color: transparent;
+  border-style: solid;
+  border-bottom-color: #eb4a4a;
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: 0;
+}
+
+.rate .down {
+  color: #1c7f40;
+}
+
+.rate .down::before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-width: 10px 5px 0 5px;
+  border-color: transparent;
+  border-style: solid;
+  border-top-color: #1c7f40;
+  display: inline-block;
+  position: absolute;
+  top: 3px;
+  left: 0;
+}
+
+.rate .none {
+  color: #ff9f0e;
+}
+
+.rate .none::before {
+  content: '';
+  width: 10px;
+  height: 0;
+  border: 1px solid #ff9f0e;
+  display: inline-block;
+  position: absolute;
+  top: 8px;
+  left: 0;
+}
+
+.part-card-list {
+  border-bottom: 1px solid rgb(234, 234, 234);
+  padding: 15px 0;
+}
+
+.part-card-item {
+  width: 50%;
+}
+
+.part-card-item .part-card-title {
+  color: #999;
+  font-size: 12px;
+}
+
+.part-card-item .part-card-num {
+  font-size: 24px;
+  color: rgb(102, 102, 102);
+}
+
+.part-card-item .unit {
+  color: #999;
+  font-size: 12px;
+}
+
+.part-card-list.time {
+  border: 0;
+}
+
+.part-card-item+.part-card-item {
+  text-align: center;
+}
+
+.part-card-item.progress {
+  text-align: right;
+}
+
+.progress-bg {
+  background-color: rgb(234, 234, 234);
+  height: 8px;
+  width: 75%;
+  border-radius: 5px;
+  position: relative;
+  display: inline-block;
+  margin-right: 10px;
+
+}
+
+.progress-bg .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 8px;
+  border-radius: 5px;
+  background-color: #89cbf1;
+}
+
+.progress-num {
+  color: #666;
+}
+
+/**************************************** 策略分析页面 ****************************************/
+.abstract {
+  position: relative;
+}
+
+.abstract-list {
+  padding: 10px 0 0 40px;
+}
+
+.abstract-title {
+  position: absolute;
+  top: 0;
+  left: 20px;
+  font-size: 12px;
+  color: #fff;
+  width: 60px;
+  line-height: 24px;
+  text-align: center;
+  background: url('../icons/abstract.png') no-repeat center;
+  background-size: 60px 24px;
+}
+
+.abstract-item {
+  font-size: 12px;
+  color: rgb(51, 51, 51);
+  line-height: 22px;
+}
+
+.abstract-num {
+  color: #ff9f0e;
+}
+
+.strategy-overview {
+  color: #fff;
+  font-size: 14px;
+}
+
+.strategy-overview .num {
+  font-size: 24px;
+}
+
+.strategy-overview .unit {
+  font-size: 14px;
+}
+
+.strategy-overview .img {
+  width: 52px;
+  height: 52px;
+  display: block;
+  background: url('../icons/strategy.png') no-repeat;
+}
+
+.overview1 {
+  background: #fb7d54;
+}
+
+.overview1 .img {
+  background-position: -10px -82px;
+}
+
+.overview2 {
+  background: #32aaff;
+}
+
+.overview2 .img {
+  background-position: -82px -82px;
+}
+
+.overview3 {
+  background: #ffb03f;
+}
+
+.overview3 .img {
+  background-position: -10px -10px;
+
+}
+
+.overview4 {
+  background: #3ec056;
+}
+
+.overview4 .img {
+  background-position: -82px -10px;
+}
+
+/**************************************** 时间轴区域 ****************************************/
+.timeLine-wrapper {
+  width: 100%;
+  padding: 0 30px;
+  float: left;
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1
+}
+
+.timeLine-body {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1
+}
+
+.timeLine-body:after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #dedede;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  z-index: 0
+}
+
+.timeLine-slide {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  box-sizing: content-box;
+}
+
+.timeLine-item {
+  position: relative;
+  float: left;
+  cursor: pointer;
+  width: 8.3%;
+
+}
+
+.timeLine-slide .timeLine-item>* {
+  text-align: center
+}
+
+.timeLine-item p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 30px;
+  color: #afafaf;
+  opacity: .7;
+  transition: all .1s
+}
+
+.timeLine-item i {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #a6a7a7;
+  border: 3px solid #dfdfdf;
+  border-radius: 50%;
+  left: 50%;
+  margin-left: -7px;
+  top: 20px;
+  z-index: 3
+}
+
+
+/* .timeLine-item:hover p, */
+.timeLine-item.active p {
+  font-size: 16px;
+  line-height: 20px;
+  color: #666;
+}
+
+/* .timeLine-item:hover i, */
+.timeLine-item.active i {
+  background: #ff9f0e;
+  border-color: #ff9f0e;
+}
+
+.timeLine-prev,
+.timeLine-next {
+  position: absolute;
+  margin-top: -22px;
+}
+
+.timeLine-prev {
+  width: 30px;
+  height: 30px;
+  left: 0;
+  top: 38px;
+  background: url('../icons/timeLine.png') -10px -10px;
+}
+
+
+.timeLine-next {
+  width: 30px;
+  height: 30px;
+  right: 0;
+  top: 38px;
+  background: url('../icons/timeLine.png') -59px -10px;
+}
+
+/**************************************** 策略评估页面 ****************************************/
+.assess-page {}
+
+.assess-top .normal-part {
+  height: 150px;
+  background: url('../images/top-bg.png') no-repeat center/cover;
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+}
+
+.top-item-first {
+  width: 30%;
+  border-right: 1px solid #fff;
+}
+
+.top-right-list {
+  width: 68%;
+}
+
+.top-text-1 {
+  height: 70px;
+  line-height: 70px;
+}
+
+.top-text-2 {
+  height: 36px;
+  line-height: 36px;
+}
+
+.top-item {
+  float: right;
+  width: 33%;
+}
+
+.max-text {
+  font-size: 65px;
+  line-height: 70px;
+}
+
+.big-text {
+  font-size: 36px;
+  display: inline-block;
+  line-height: 36px;
+  margin: 0 5px;
+}
+
+.similarity-part {
+  font-size: 14px;
+  color: rgb(51, 51, 51);
+}
+
+
+
+.similarity-part .product-num {
+  color: rgb(228, 95, 110);
+  text-align: center;
+  margin-top: 15px;
+
+}
+
+.similarity-part .product-name {
+  color: rgb(208, 110, 38);
+  text-align: center;
+
+  margin-top: 5px;
+}
+
+.similarity-part .rate-num {
+  color: #fe845a;
+}
+
+.similarity-part a {
+  color: rgb(37, 99, 225);
+  text-decoration: underline;
+}
+
+.similarity-part.active {
+  background: rgb(237, 151, 61);
+  color: #fff;
+}
+
+.similarity-part.active a,
+.similarity-part.active .product-name,
+.similarity-part.active .product-num,
+.similarity-part.active .rate-num {
+  color: #fff;
+}
