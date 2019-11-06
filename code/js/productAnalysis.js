@@ -1,5 +1,17 @@
 $(function () {
-  rendTimeLine(9);//初始化时间轴区域
+  rendTimeLine(new Date().getMonth());//初始化时间轴区域
+  rendPage()
+})
+
+// 时间轴点击事件
+function clickTimeLine (i, month) {
+  console.log(i, month)
+  rendTimeLine(i)
+  rendPage()
+}
+
+function rendPage () {
+  //todo 数据操作
   var width = $('#chart1').width()
   var legendData = ['推送量', '订购量']
   var yAxisData = ['CBSS', 'ESS', '微信', '外呼', '短信']
@@ -98,12 +110,5 @@ $(function () {
   var xAxisData2 = ['4月', '5月', '6月', '7月', '8月', '9月', '10月']
   var barData2 = [2, 12, 16, 4, 10, 50, 23]
   rendPicBarChart('chart42', xAxisData2, barData2, width)
-})
-
-// 时间轴点击事件
-function clickTimeLine (i, month) {
-  console.log(i, month)
-  rendTimeLine(i)
-  //todo 数据操作
 }
 

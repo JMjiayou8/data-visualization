@@ -1,9 +1,18 @@
 $(function () {
-  renderPage()
+  rendPage()
 })
 
-function renderPage () {
+function rendPage () {
   //todo ajax请求渲染页面
+  var data = [
+    { text: '价值提升', max: 10, value: 1.5 },
+    { text: '执行成本', max: 10, value: 3.6 },
+    { text: '营销规模', max: 10, value: 8.3 },
+  ]
+  rendRadarChart('chart1', data)
+  var lineAxisData1 = ['2018-04', '2018-05', '2018-06', '2018-07', '2018-08', '2018-09', '2018-10']
+  var lineData1 = [820, 32, 901, 934, 190, 1330, 1320]
+  rendSingleLineChart2('chart2', lineAxisData1, lineData1)
   var pieData = [
     { name: '200以上', value: 122, perNum: 39 },
     { name: '100-200', value: 12, perNum: 39 },
@@ -40,21 +49,6 @@ function renderPage () {
   ]
   rendMultiLineChart('chart31', xAxisData, barData, '本策略')
   rendMultiLineChart('chart32', xAxisData, barData, '相似策略——充值送流量')
-}
 
-//产品相似度分析 区域点击切换
-$('.similarity-part').click(function () {
-  var parent = $(this).parents('.similarity-wrap')
-  parent.find('.similarity-part').removeClass('active')
-  $(this).addClass('active')
-  renderPage()
-})
 
-//详细数据点击事件
-function toDetail (title) {
-  event.preventDefault()
-  //todo 具体详细操作
-  alert(title)
-
-  return false;
 }

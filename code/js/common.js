@@ -524,7 +524,7 @@ function rendAssessPie (id, data, title) {
       }
     }
   }
-  var center = ['30%', '45%']
+  var center = ['28%', '45%']
   var option = {
     title: getTitleConfig(title),
     color: ['#4381d2', '#ba78d6', '#e1b941', '#56be97'],
@@ -731,7 +731,153 @@ function rendMultiLineChart (id, xAxisData, data, title) {
   }
   chart9.setOption(option)
 }
+// 雷达图
+function rendRadarChart (id, data) {
+  var chart10 = echarts.init(document.getElementById(id))
+  var nums = []
+  for (var i = 0; i < data.length; i++) {
+    nums.push(data[i].value)
+  }
+  var pieLegendStyle = {
+    rich: {
+      title: {
+        width: 80,
+        height: 50,
+        fontSize: 16,
+        color: "#818181",
+        padding: [0, 20]
+      },
+      value: {
+        width: 50,
+        height: 50,
+        fontSize: 18,
+        color: "#f0912d",
+        padding: [0, 20]
+      }
+    }
+  }
+  var option = {
+    color: ['#a2badf'],
+    legend: {
+      x: '60%',
+      y: 'center',
+      itemWidth: 0,
+      formatter: function () {
+        var arr = [];
+        for (var i = 0; i < data.length; i++) {
+          arr.push("{title|" + data[i].text + '得分:' + "}{value|" + data[i].value + "}\n")
+        }
+        return arr.join('')
+      },
+      textStyle: pieLegendStyle,
+    },
 
+    radar: [
+      {
+        indicator: data,
+        center: ['30%', '65%'],
+        radius: 100,
+        axisLine: {
+          lineStyle: {
+            color: '#ededee',
+            type: 'dashed'
+          }
+        },
+        splitLine: {
+          lineStyle: {
+            color: '#a1b1cc',
+            type: 'dashed'
+          }
+        },
+        splitArea: {
+          areaStyle: {
+            color: ['#fff']
+          }
+        },
+        name: {
+          color: '#666666'
+        }
+      }
+    ],
+    series: [
+      {
+        type: 'radar',
+        tooltip: {
+          trigger: 'item'
+        },
+        itemStyle: { normal: { areaStyle: { type: 'default' } } },
+        label: {
+          show: true,
+          color: '#666'
+        },
+        data: [
+          {
+            value: nums,
+            name: '某软件'
+          }
+        ]
+      },
+    ]
+  };
+  chart10.setOption(option)
+}
+function rendSingleLineChart2 (id, xAxisData, data) {
+  var chart11 = echarts.init(document.getElementById(id))
+  var option = {
+    color: ['#1ada6f'],
+    grid: {
+      left: 50,
+      right: 10,
+      top: 20,
+      bottom: 20
+    },
+    xAxis: {
+      type: 'category',
+      data: xAxisData,
+      axisLine: {
+        lineStyle: {
+          color: '#999999'
+        }
+      },
+      axisTick: {
+        lineStyle: {
+          color: '#999999'
+        }
+      },
+      axisLabel: {
+        color: '#999999'
+      }
+    },
+    yAxis: {
+      type: 'value',
+      axisLine: { show: false },
+      axisTick: { show: false },
+      axisLabel: {
+        color: '#999999'
+      },
+      axisLine: {
+        lineStyle: {
+          color: '#999999'
+        }
+      },
+      axisTick: {
+        lineStyle: {
+          color: '#999999'
+        }
+      },
+    },
+    series: [
+      {
+        data: data,
+        type: 'line',
+        symbol: 'emptycircle',
+        symbolSize: 10
+      }
+    ]
+  }
+  chart11.setOption(option)
+
+}
 /**
  * 获取url参数
  * @param {*} url 

@@ -1,4 +1,8 @@
 $(function () {
+  rendPage()
+
+})
+function rendPage () {
   var width = $('#chart31').width()
   var data = [
     { value: 335, name: '高稳定度' },
@@ -33,5 +37,4 @@ $(function () {
   var lineAxisData = ['4月', '5月', '6月', '7月', '8月', '9月', '10月']
   var lineData = [820, 932, 901, 934, 1290, 1330, 1320]
   rendSingleLineChart('chart4', lineAxisData, lineData, width)
-})
-
+}

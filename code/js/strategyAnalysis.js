@@ -1,5 +1,17 @@
 $(function () {
-  rendTimeLine(9)
+  rendTimeLine(new Date().getMonth())
+  renderPage()
+})
+
+// 时间轴点击事件
+function clickTimeLine (i, month) {
+  console.log(month)
+  rendTimeLine(i)
+  renderPage()
+}
+
+function renderPage () {
+  //todo 数据操作
   var width = $('#chart1').width()
   var legendData = ['推送量', '订购量']
   var yAxisData = ['CBSS', 'ESS', '微信', '外呼', '短信']
@@ -34,22 +46,6 @@ $(function () {
   var lineAxisData3 = ['4月', '5月', '6月', '7月', '8月', '9月', '10月']
   var lineData3 = [20, 932, 901, 934, 1290, 130, 320]
   rendSingleLineChart('chart43', lineAxisData3, lineData3, width)
-})
-
-// 时间轴点击事件
-function clickTimeLine (i, month) {
-  console.log(month)
-  rendTimeLine(i)
-  //todo 数据操作
 }
-
-function toOtherPage () {
-  var param = {
-    a: 1,
-    b: 2
-  }
-  window.location.href = 'https://www.baidu.com' + '?' + setUrlParam(param)
-}
-
 
 
