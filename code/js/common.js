@@ -58,7 +58,9 @@ var echartsConfig = {
   horizontalBarColor: ['#d0e3fe', '#639afe']
 }
 function getTitleConfig (title) {
+
   return {
+    show: !!title,
     text: title,
     x: 'center',
     y: 'bottom',
