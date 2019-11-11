@@ -904,11 +904,12 @@ body {
 
 .config-list {
   position: absolute;
-  top: 35px;
+  top: 32px;
   right: 0;
   max-width: 290px;
   border: 1px solid #ffab0a;
   background: #fff;
+  padding: 10px 0;
   display: none;
   z-index: 1;
   border-radius: 5px 0 5px 5px;
@@ -935,6 +936,7 @@ body {
   text-align: left;
   line-height: 30px;
   padding-left: 10px;
+  background: #fff;
 }
 
 .config-item.active button {
