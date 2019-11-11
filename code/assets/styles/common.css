@@ -26,6 +26,7 @@ a {
 button {
   border: 0;
   outline: none;
+  cursor: pointer;
 }
 
 /* 公共样式类 */
@@ -36,9 +37,33 @@ body {
   color: #999;
 }
 
-.clearfix {
+/* .clearfix {
   overflow: hidden;
+} */
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
+
+.clearfix {
+  display: inline-table;
+}
+
+/* Hides from IE-mac \*/
+* html .clearfix {
+  height: 1%;
+  zoom: 1;
+}
+
+.clearfix {
+  display: block;
+}
+
+/* End hide from IE-mac */
 
 .fl {
   float: left;
@@ -131,10 +156,11 @@ body {
 .page-title {
   font-size: 18px;
   color: #666;
-  line-height: 20px;
+  line-height: 36px;
   position: relative;
   padding-left: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
+  position: relative;
 }
 
 .page-title::before {
@@ -146,7 +172,7 @@ body {
   display: inline-block;
   box-sizing: border-box;
   position: absolute;
-  top: 2px;
+  top: 12px;
   left: 0;
 }
 
@@ -852,4 +878,72 @@ body {
   background-position: -10px -80px;
 }
 
-.preview-reate {}
+/* 指标配置 */
+.config-part-list .normal-part{
+  display: none;
+}
+
+.config-top {
+  width: 120px;
+  font-size: 14px;
+  line-height: 32px;
+  border-radius: 5px;
+  border: 1px solid #ffab0a;
+  cursor: pointer;
+  box-sizing: border-box;
+  text-align: left;
+  padding: 0 20px;
+  background:#fff url('../icons/down.png') no-repeat 90px center;
+  background-size: 12px;
+}
+.config-top.active{
+  border-bottom-color: #fff;
+  background:#fff url('../icons/up.png') no-repeat 90px center;
+  background-size: 12px;
+}
+
+.config-list {
+  position: absolute;
+  top: 35px;
+  right: 0;
+  max-width: 290px;
+  border: 1px solid #ffab0a;
+  background: #fff;
+  display: none;
+  z-index: 1;
+  border-radius: 5px 0 5px 5px;
+  box-sizing: border-box;
+}
+.config-list::before{
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -1px;
+  width: 118px;
+  height: 1px;
+  background: #fff;
+}
+
+.config-item {
+  margin: 5px 0 5px 16px;
+}
+
+.config-item button {
+  min-width: 120px;
+  border: 1px solid #bfbfbf;
+  border-radius: 5px;
+  text-align: left;
+  line-height: 30px;
+  padding-left: 10px;
+}
+
+.config-item.active button {
+  background: #ed973d;
+  border-color: #ed973d;
+  color: #fff;
+}
+
+.config-item button:disabled {
+  background: #e3e3e3;
+  border-color: #e3e3e3;
+}
