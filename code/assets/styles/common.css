@@ -706,8 +706,6 @@ body {
   cursor: pointer;
 }
 
-
-
 .similarity-part .product-num {
   color: rgb(228, 95, 110);
   text-align: center;
@@ -730,7 +728,13 @@ body {
   color: rgb(37, 99, 225);
   text-decoration: underline;
 }
-
+.product-num .big-text{
+  text-decoration: none;
+  color: rgb(228, 95, 110);
+}
+.product-num .big-text:hover{
+  opacity: .6;
+}
 .similarity-part.active {
   background: rgb(237, 151, 61);
   color: #fff;
