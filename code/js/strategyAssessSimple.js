@@ -35,7 +35,9 @@ $('.similarity-part').click(function () {
   var parent = $(this).parents('.similarity-wrap')
   parent.find('.similarity-part').removeClass('active')
   $(this).addClass('active')
-  renderPage()
+  var productId=$(this).attr('productId')
+  alert(productId)
+  renderPage({productId:productId})
 })
 
 // 渲染页面图表
@@ -139,6 +141,9 @@ function renderPage () {
 }
 // 额外数据渲染
 function rendOtherMap (otherMap) {
+  $('#similarity-part1').attr('productId',111)
+  $('#similarity-part2').attr('productId',222)
+  $('#similarity-part3').attr('productId',333)
   $('#simaillerRate1').html(otherMap.simillerRate || '');
   $('#simaillerRate2').html(otherMap.simillerRate || '');
   $('#simaillerRate3').html(otherMap.simillerRate || '');
