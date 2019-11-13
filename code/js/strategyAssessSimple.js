@@ -30,18 +30,11 @@ function toDetail (title) {
 
   return false;
 }
-//产品相似度分析 区域点击切换
-$('.similarity-part').click(function () {
-  var parent = $(this).parents('.similarity-wrap')
-  parent.find('.similarity-part').removeClass('active')
-  $(this).addClass('active')
-  var productId=$(this).attr('productId')
-  alert(productId)
-  renderPage({productId:productId})
-})
+
 
 // 渲染页面图表
-function renderPage () {
+function renderPage (param) {
+  console.log('param==',param)
   //todo ajax请求渲染页面
   // $.ajax({
   //     type: "POST",
@@ -132,7 +125,7 @@ function renderPage () {
   var pieData = data.userLevelList;
   rendAssessPie('chart12', pieData);
 
-  rendOtherMap(data.otherMap)
+  rendOtherMap(data.otherMap,param.productId)
   //     },
   //     error: function (XMLHttpRequest, textStatus) {
   //         alert("请求对象XMLHttpRequest: "+XMLHttpRequest.responseText);
@@ -140,23 +133,60 @@ function renderPage () {
   // })
 }
 // 额外数据渲染
-function rendOtherMap (otherMap) {
-  $('#similarity-part1').attr('productId',111)
-  $('#similarity-part2').attr('productId',222)
-  $('#similarity-part3').attr('productId',333)
-  $('#simaillerRate1').html(otherMap.simillerRate || '');
-  $('#simaillerRate2').html(otherMap.simillerRate || '');
-  $('#simaillerRate3').html(otherMap.simillerRate || '');
-  $('#score1').html(otherMap.saleScore || '0');
-  $('#score2').html(otherMap.saleScore || '0');
-  $('#score3').html(otherMap.saleScore || '0');
-  $('#productName1').html(otherMap.saleName || '');
-  $('#productName2').html(otherMap.saleName || '');
-  $('#productName3').html(otherMap.saleName || '');
-  $('#execDate1').html(otherMap.execDate || '');
-  $('#execDate2').html(otherMap.execDate || '');
-  $('#execDate3').html(otherMap.execDate || '');
+function rendOtherMap (otherMap,productId) {
+  var otherMap=[
+    {
+      productId:'1',
+      simillerRate:'7',
+      saleName:'产品1',
+      saleScore:'1',
+      execDate:'20191010'
+    },
+    {
+      productId:'2',
+      simillerRate:'9',
+      saleName:'产品2',
+      saleScore:'2',
+      execDate:'20191010'
+    },
+    {
+      productId:'3',
+      simillerRate:'8',
+      saleName:'产品3',
+      saleScore:'3',
+      execDate:'20191010'
+    }
+  ]
+
+  var otherMapTemplate='<div class="normal-part per3 similarity-part {active}"  productId="{productId}">'+
+  '<div class="part-body "><p>相似度: <span class="rate-num" >{simaillerRate}</span></p>'+
+    '<p class="product-num"><a class="big-text" href="https://www.baidu.com/" id="score2">{saleScore}</a>分</p>'+
+    '<p class="product-name">{saleName}</p>'+
+    '<p class="clerafix"><span class="fl" >{execDate}</span>'+
+      '<a class="fr" href="javascript:;" >详细数据</a>'+
+   '</p></div></div>'
+   var arr=[];
+   productId=productId||otherMap[0].productId;
+   for(var i=0;i<otherMap.length;i++){
+     var item=otherMap[i];
+     arr.push(otherMapTemplate.replace(/\{productId\}/g,item.productId)
+     .replace(/\{active\}/g,item.productId==productId?'active':'')
+     .replace(/\{simaillerRate\}/g,item.simillerRate)
+     .replace(/\{saleName\}/g,item.saleName)
+     .replace(/\{saleScore\}/g,item.saleScore)
+     .replace(/\{execDate\}/g,item.execDate))
+   }
+  $('.similarity-wrap').html(arr.join(''))
 }
+
+//产品相似度分析 区域点击切换
+$(document).on('click','.similarity-part',function () {
+  var parent = $(this).parents('.similarity-wrap')
+  parent.find('.similarity-part').removeClass('active')
+  $(this).addClass('active')
+  var productId=$(this).attr('productId')
+  renderPage({productId:productId})
+})
 // 渲染配置列表
 function rendConfigWrap () {
   var arr = [];
@@ -177,7 +207,7 @@ function rendChartPart(){
     htmlArr.push(partHtml.replace(/\{partTitle\}/, item.partTitle).replace(/\{chartId\}/g, 'chart' + item.index))
   }
   $('.config-part-list').html(htmlArr.join(''));
-  renderPage()
+  renderPage({})
 }
 // 单击配置单项
 function choseConfigItem (id) {
