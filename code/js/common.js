@@ -520,162 +520,168 @@ function rendPicBarChart (id, yAxisData, data, width) {
 }
 // 目标用户ARPU值分布分析
 function rendAssessPie (id, data, title) {
-  var chart8 = echarts.init(document.getElementById(id))
-  var pieLegendStyle = {
-    rich: {
-      title: {
-        width: 40,
-        fontSize: 16,
-        color: "#818181",
-        padding: [0, 20]
-      },
-      value: {
-        width: 50,
-        fontSize: 18,
-        color: "#7e26a7",
-        padding: [0, 20]
+  if(document.getElementById(id)){
+    var chart8 = echarts.init(document.getElementById(id))
+    var pieLegendStyle = {
+      rich: {
+        title: {
+          width: 120,
+          fontSize: 16,
+          color: "#818181",
+          padding: [0, 20]
+        },
+        value: {
+          width: 50,
+          fontSize: 18,
+          color: "#7e26a7",
+          padding: [0, 20]
+        }
       }
     }
+    var center = ['28%', '45%']
+    var option = {
+      title: getTitleConfig(title),
+      color: ['#4381d2', '#ba78d6', '#e1b941', '#56be97'],
+      legend: {
+        x: 'right',
+        y: 'center',
+        orient: 'vertical',
+        align: 'left',
+        itemGap: 20,
+        itemWidth: 15,
+        itemHeight: 15,
+        icon: 'rect',
+        formatter: function (name) {
+          var value = data.find(item => item.name == name).value;
+          var per = data.find(item => item.name == name).perNum;
+          return "{title|" + name + "}{value|" + value + '万元' + "}{value|" + per + '%' + "}"
+        },
+        textStyle: pieLegendStyle,
+  
+      },
+      calculable: true,
+      series: [
+        {
+          name: title,
+          type: 'pie',
+          radius: [30, 80],
+          center: center,
+          roseType: 'radius',
+          label: {
+            normal: {
+              show: false
+            },
+            emphasis: {
+              show: true
+            }
+          },
+          lableLine: {
+            normal: {
+              show: false
+            },
+            emphasis: {
+              show: false
+            }
+          },
+          data: data
+        },
+        {
+          name: 'rise',
+          type: 'pie',
+          radius: [90, 92],
+          center: center,
+          roseType: 'radius',
+          label: {
+            normal: {
+              show: false
+            },
+            emphasis: {
+              show: false
+            }
+          },
+          itemStyle: {
+            color: '#bbc1cd'
+          },
+          data: [
+            { value: 1, name: '' },
+          ]
+        },
+  
+      ]
+    };
+    chart8.setOption(option)
+    // chart8.resize() 
   }
-  var center = ['28%', '45%']
-  var option = {
-    title: getTitleConfig(title),
-    color: ['#4381d2', '#ba78d6', '#e1b941', '#56be97'],
-    legend: {
-      x: 'right',
-      y: 'center',
-      orient: 'vertical',
-      align: 'left',
-      itemGap: 20,
-      itemWidth: 15,
-      itemHeight: 15,
-      icon: 'rect',
-      formatter: function (name) {
-        var value = data.find(item => item.name == name).value;
-        var per = data.find(item => item.name == name).perNum;
-        return "{title|" + name + "}{value|" + value + '万元' + "}{value|" + per + '%' + "}"
-      },
-      textStyle: pieLegendStyle,
-
-    },
-    calculable: true,
-    series: [
-      {
-        name: title,
-        type: 'pie',
-        radius: [30, 80],
-        center: center,
-        roseType: 'radius',
-        label: {
-          normal: {
-            show: false
-          },
-          emphasis: {
-            show: true
-          }
-        },
-        lableLine: {
-          normal: {
-            show: false
-          },
-          emphasis: {
-            show: false
-          }
-        },
-        data: data
-      },
-      {
-        name: 'rise',
-        type: 'pie',
-        radius: [90, 92],
-        center: center,
-        roseType: 'radius',
-        label: {
-          normal: {
-            show: false
-          },
-          emphasis: {
-            show: false
-          }
-        },
-        itemStyle: {
-          color: '#bbc1cd'
-        },
-        data: [
-          { value: 1, name: '' },
-        ]
-      },
-
-    ]
-  };
-  chart8.setOption(option)
-  // chart8.resize() 
+  
 }
 //目标用户流量分析
 function rendSingleBarChart2 (id, xAxisData, data, title) {
-  var chart8 = echarts.init(document.getElementById(id))
-  // $('#' + id).width(width + 'px')
-  var option = {
-    color: ['#e38bb8'],
-    title: getTitleConfig(title),
-    grid: {
-      left: 50,
-      right: 10,
-      top: 20,
-      bottom: 60
-    },
-    xAxis: {
-      type: 'category',
-      data: xAxisData,
-      axisLine: {
-        lineStyle: {
+  if(document.getElementById(id)){
+    var chart8 = echarts.init(document.getElementById(id))
+    // $('#' + id).width(width + 'px')
+    var option = {
+      color: ['#e38bb8'],
+      title: getTitleConfig(title),
+      grid: {
+        left: 50,
+        right: 10,
+        top: 20,
+        bottom: 60
+      },
+      xAxis: {
+        type: 'category',
+        data: xAxisData,
+        axisLine: {
+          lineStyle: {
+            color: '#999999'
+          }
+        },
+        axisTick: {
+          lineStyle: {
+            color: '#999999'
+          }
+        },
+        axisLabel: {
           color: '#999999'
         }
       },
-      axisTick: {
-        lineStyle: {
+      yAxis: {
+        type: 'value',
+        axisLine: { show: false },
+        axisTick: {
+          lineStyle: {
+            color: '#999999'
+          }
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#999999'
+          }
+        },
+        axisLabel: {
           color: '#999999'
+        },
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
+          }
         }
       },
-      axisLabel: {
-        color: '#999999'
-      }
-    },
-    yAxis: {
-      type: 'value',
-      axisLine: { show: false },
-      axisTick: {
-        lineStyle: {
-          color: '#999999'
+      series: [
+        {
+          name: title,
+          data: data,
+          type: 'bar',
+          barWidth: 30,
+          itemStyle: {
+            barBorderRadius: [5, 5, 0, 0]
+          }
         }
-      },
-      axisLine: {
-        lineStyle: {
-          color: '#999999'
-        }
-      },
-      axisLabel: {
-        color: '#999999'
-      },
-      splitLine: {
-        lineStyle: {
-          type: 'dashed'
-        }
-      }
-    },
-    series: [
-      {
-        name: title,
-        data: data,
-        type: 'bar',
-        barWidth: 30,
-        itemStyle: {
-          barBorderRadius: [5, 5, 0, 0]
-        }
-      }
-    ]
+      ]
+    }
+    chart8.setOption(option)
   }
-  chart8.setOption(option)
+
 }
 // 目标用户年龄段分布分析
 function rendMultiLineChart (id, xAxisData, data, title) {
