@@ -1,18 +1,23 @@
+//配置数据
 var configData = [
-  { index: 1, text: '套餐类型',  disabled: false, partTitle: '套餐类型分析' },
-  { index: 2, text: 'ARPU值',  disabled: false, partTitle: '目标用户ARPU值分布分析' },
-  { index: 3, text: '流量',  disabled: false, partTitle: '目标用户流量分析' },
-  { index: 4, text: '主叫次数占比',  disabled: false, partTitle: '主叫次数占比分析' },
-  { index: 5, text: '入网时长',  disabled: false, partTitle: '入网时长分析' },
-  { index: 6, text: '用户状态',  disabled: false, partTitle: '用户状态分析' },
-  { index: 7, text: '稳定度',  disabled: false, partTitle: '稳定度分析' },
-  { index: 8, text: '活跃度',  disabled: false, partTitle: '活跃度分析' },
-  { index: 9, text: '年龄',  disabled: false, partTitle: '目标用户年龄段分布分析' },
-  { index: 10, text: '性别',  disabled: true, partTitle: '性别分析' },
-  { index: 11, text: '地市',  disabled: true, partTitle: '地市分析' },
-  { index: 12, text: '用户等级',  disabled: true, partTitle: '用户等级分析' },
+  { index: 1, text: '套餐类型', disabled: false, partTitle: '套餐类型分析' },
+  { index: 2, text: 'ARPU值', disabled: false, partTitle: '目标用户ARPU值分布分析' },
+  { index: 3, text: '流量', disabled: false, partTitle: '目标用户流量分析' },
+  { index: 4, text: '主叫次数占比', disabled: false, partTitle: '主叫次数占比分析' },
+  { index: 5, text: '入网时长', disabled: false, partTitle: '入网时长分析' },
+  { index: 6, text: '用户状态', disabled: false, partTitle: '用户状态分析' },
+  { index: 7, text: '稳定度', disabled: false, partTitle: '稳定度分析' },
+  { index: 8, text: '活跃度', disabled: false, partTitle: '活跃度分析' },
+  { index: 9, text: '年龄', disabled: false, partTitle: '目标用户年龄段分布分析' },
+  { index: 10, text: '性别', disabled: true, partTitle: '性别分析' },
+  { index: 11, text: '地市', disabled: true, partTitle: '地市分析' },
+  { index: 12, text: '用户等级', disabled: true, partTitle: '用户等级分析' },
 ]
-var showPartArr = [2,3,9];
+//页面显示模块index
+var showPartArr = [2, 3, 9];
+// 配置按钮模块
+var templeLi = '<li class="config-item fl {isChoose}"><button {onclick} {disabled}>{text}</button></li>'
+// 图表模块
 var partHtml = '<div class="normal-part per2 "  style="display:block;">' +
   '<div class="part-title-wrap"><p class="part-title">{partTitle}</p></div>' +
   '<div class="part-body "><div id="{chartId}" style="width: 100%;height: 280px;"></div></div></div>'
@@ -150,29 +155,28 @@ function rendOtherMap (otherMap) {
 // 渲染配置列表
 function rendConfigWrap () {
   var arr = [];
-  var templeLi = '<li class="config-item fl {isChoose}"><button {onclick} {disabled}>{text}</button></li>'
   for (var i = 0; i < configData.length; i++) {
     var item = configData[i];
     arr.push(templeLi.replace(/\{text\}/g, item.text)
       .replace(/\{onclick\}/g, 'onclick="choseConfigItem(\'' + item.index + '\')"')
-      .replace(/\{isChoose\}/g, showPartArr.indexOf(+item.index)>-1 ? 'active' : '')
+      .replace(/\{isChoose\}/g, showPartArr.indexOf(+item.index) > -1 ? 'active' : '')
       .replace(/\{disabled\}/g, item.disabled ? 'disabled=true' : ''))
   }
   $('.config-list').html(arr.join(''))
   var htmlArr = []
   for (var i = 0; i < showPartArr.length; i++) {
-    var item = configData[showPartArr[i]-1];
-      htmlArr.push(partHtml.replace(/\{partTitle\}/, item.partTitle).replace(/\{chartId\}/, 'chart' + item.index))
+    var item = configData[showPartArr[i] - 1];
+    htmlArr.push(partHtml.replace(/\{partTitle\}/, item.partTitle).replace(/\{chartId\}/, 'chart' + item.index))
   }
   $('.config-part-list').html(htmlArr.join(''));
   renderPage()
 }
 // 单击配置单项
 function choseConfigItem (id) {
-  var index=showPartArr.indexOf(+id)
-  if(index>-1){
-    showPartArr.splice(index,1)
-  }else{
+  var index = showPartArr.indexOf(+id)
+  if (index > -1) {
+    showPartArr.splice(index, 1)
+  } else {
     showPartArr.push(+id)
   }
   rendConfigWrap();
