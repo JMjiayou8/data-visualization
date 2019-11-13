@@ -567,6 +567,7 @@ function rendAssessPie (id, data, title) {
           radius: [30, 80],
           center: center,
           roseType: 'radius',
+          animation:false,
           label: {
             normal: {
               show: false
@@ -590,6 +591,7 @@ function rendAssessPie (id, data, title) {
           type: 'pie',
           radius: [90, 92],
           center: center,
+          animation:false,
           roseType: 'radius',
           label: {
             normal: {
@@ -672,6 +674,7 @@ function rendSingleBarChart2 (id, xAxisData, data, title) {
           name: title,
           data: data,
           type: 'bar',
+          animation:false,
           barWidth: 30,
           itemStyle: {
             barBorderRadius: [5, 5, 0, 0]
@@ -685,70 +688,75 @@ function rendSingleBarChart2 (id, xAxisData, data, title) {
 }
 // 目标用户年龄段分布分析
 function rendMultiLineChart (id, xAxisData, data, title) {
-  var chart9 = echarts.init(document.getElementById(id))
-  var series = []
-  for (var i = 0; i < data.length; i++) {
-    series.push({
-      name: data[i].name,
-      type: 'line',
-      data: data[i].data,
-      symbolSize: 10,
-      lineStyle: {
-        width: 2
-      }
-    })
+  if(document.getElementById(id)){
+    var chart9 = echarts.init(document.getElementById(id))
+    var series = []
+    for (var i = 0; i < data.length; i++) {
+      series.push({
+        name: data[i].name,
+        type: 'line',
+        data: data[i].data,
+        animation:false,
+        symbolSize: 10,
+        lineStyle: {
+          width: 2
+        }
+      })
+    }
+    var option = {
+      color: ['#2cb634', '#cfda4c', '#da993f'],
+      title: getTitleConfig(title),
+      grid: {
+        left: 50,
+        right: 10,
+        top: 20,
+        bottom: 60
+      },
+      xAxis: {
+        type: 'category',
+        data: xAxisData,
+        axisLine: {
+          lineStyle: {
+            color: '#999999'
+          }
+        },
+        axisTick: {
+          lineStyle: {
+            color: '#999999'
+          }
+        },
+        axisLabel: {
+          color: '#999999'
+        }
+      },
+      yAxis: {
+        type: 'value',
+        axisLine: { show: false },
+        axisTick: {
+          lineStyle: {
+            color: '#999999'
+          }
+        },
+        axisLine: {
+          lineStyle: {
+            color: '#999999'
+          }
+        },
+        axisLabel: {
+          color: '#999999'
+        },
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
+          }
+        }
+      },
+      series: series
+    }
+    chart9.setOption(option)
   }
-  var option = {
-    color: ['#2cb634', '#cfda4c', '#da993f'],
-    title: getTitleConfig(title),
-    grid: {
-      left: 50,
-      right: 10,
-      top: 20,
-      bottom: 60
-    },
-    xAxis: {
-      type: 'category',
-      data: xAxisData,
-      axisLine: {
-        lineStyle: {
-          color: '#999999'
-        }
-      },
-      axisTick: {
-        lineStyle: {
-          color: '#999999'
-        }
-      },
-      axisLabel: {
-        color: '#999999'
-      }
-    },
-    yAxis: {
-      type: 'value',
-      axisLine: { show: false },
-      axisTick: {
-        lineStyle: {
-          color: '#999999'
-        }
-      },
-      axisLine: {
-        lineStyle: {
-          color: '#999999'
-        }
-      },
-      axisLabel: {
-        color: '#999999'
-      },
-      splitLine: {
-        lineStyle: {
-          type: 'dashed'
-        }
-      }
-    },
-    series: series
-  }
-  chart9.setOption(option)
+
+ 
 }
 // 雷达图
 function rendRadarChart (id, data) {
