@@ -521,33 +521,41 @@ function rendPicBarChart (id, yAxisData, data, width) {
 // 目标用户ARPU值分布分析
 function rendAssessPie (id, data, title) {
   if(document.getElementById(id)){
+    let width=parseFloat(getComputedStyle(document.getElementById(id)).width) ;
+    var center = ['25%', '45%']//饼图中心点位置
+    var radius1=['20%', '62%'],radius2=['64%', '65%'];//饼图半径
+    var legendX='right',legendY='center';//图例位置
+    if(width<520){//图形宽度临界值
+       center = ['50%', '25%']
+       legendX='center';legendY='50%'
+       radius1=['20%','40%'];radius2=['42%','43%']
+       $('#' + id).height('400px')
+    }
     var chart8 = echarts.init(document.getElementById(id))
     var pieLegendStyle = {
       rich: {
         title: {
-          width: 120,
+          width: 120,//右侧图例名称长度
           fontSize: 16,
           color: "#818181",
-          padding: [0, 20]
+          padding: [0, 10]
         },
         value: {
-          width: 50,
           fontSize: 18,
           color: "#7e26a7",
-          padding: [0, 20]
+          padding: [0, 10]
         }
       }
     }
-    var center = ['28%', '45%']
     var option = {
       title: getTitleConfig(title),
       color: ['#4381d2', '#ba78d6', '#e1b941', '#56be97'],
-      legend: {
-        x: 'right',
-        y: 'center',
+      legend: { 
+        x: legendX,
+        y: legendY,
         orient: 'vertical',
         align: 'left',
-        itemGap: 20,
+        itemGap: 15,
         itemWidth: 15,
         itemHeight: 15,
         icon: 'rect',
@@ -564,7 +572,7 @@ function rendAssessPie (id, data, title) {
         {
           name: title,
           type: 'pie',
-          radius: [30, 80],
+          radius: radius1,
           center: center,
           roseType: 'radius',
           animation:false,
@@ -589,7 +597,7 @@ function rendAssessPie (id, data, title) {
         {
           name: 'rise',
           type: 'pie',
-          radius: [90, 92],
+          radius: radius2,
           center: center,
           animation:false,
           roseType: 'radius',
@@ -612,7 +620,7 @@ function rendAssessPie (id, data, title) {
       ]
     };
     chart8.setOption(option)
-    // chart8.resize() 
+    chart8.resize() 
   }
   
 }
