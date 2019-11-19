@@ -7,3 +7,7 @@
 - strategyAssessSimple:策略评估--简化页面
 - userGroup:用户群分析
 - productAnalysis:产品分析
+
+##### code11-19
+
+- configProduct:产品配置页面

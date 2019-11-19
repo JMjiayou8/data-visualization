@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>产品配置</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link
+      rel="stylesheet"
+      href="./js/third/layui-v2.5.5/layui/css/layui.css"
+      media="all"
+    />
+    <link rel="stylesheet" href="./assets/styles/common.css" />
+  </head>
+  <body>
+    <div class="normal-page">
+      <div class="page-title">
+        产品配置页面
+      </div>
+      <div class="page-body clearfix ">
+        <div class="normal-part">
+          <form class="layui-form" lay-filter="form1">
+            <div class="layui-form-item middle">
+              <label class="layui-form-label">推荐产品：</label>
+              <div class="layui-input-inline">
+                <input
+                  type="text"
+                  name="title"
+                  autocomplete="off"
+                  class="layui-input"
+                />
+              </div>
+              <i class="layui-icon layui-icon-search form-search-icon"></i>
+            </div>
+            <div id="selectWrap"></div>
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label">生效日期：</label>
+                <div class="layui-input-inline">
+                  <input
+                    type="text"
+                    class="layui-input"
+                    id="date1"
+                    name="date1"
+                  />
+                </div>
+              </div>
+              <span class="dateRange-linkText">到</span>
+              <div class="layui-inline">
+                <div class="layui-input-inline">
+                  <input
+                    type="text"
+                    class="layui-input  "
+                    id="date2"
+                    name="date2"
+                  />
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="layui-btn layui-btn-submit"
+            lay-submit=""
+            lay-filter="submitForm1"
+          >
+            提交
+          </button>
+        </div>
+      </div>
+    </div>
+    <script id="selectHtml" type="text/html">
+      {{#  layui.each(d.list, function(index, item){ }}
+      <div class="layui-form-item">
+          <label class="layui-form-label">{{#  if(index=== 0){ }}触点选择： {{#  } }}</label>
+          <div class="layui-input-inline">
+            <div class="config-select clearfix">
+                <select name="interest{{index}}" value="{{item}}">
+                    <option value=""></option>
+                    {{#  layui.each(d.optionList, function(i, option){ }}
+                      <option value="{{option.value}}">{{option.text}}</option>
+                    {{#  }); }}
+                </select>
+                <i class="layui-icon layui-icon-set config-btn"></i>
+            </div>
+          </div>
+          <div class="layui-input-inline">
+            <button
+              type="button"
+              class="layui-btn  layui-btn-sm  layui-btn-add"
+              data-index="{{index}}"
+            >
+              <i class="layui-icon layui-icon-add-1"></i> 添加
+            </button>
+            <button
+              type="button"
+              class="layui-btn  layui-btn-sm  layui-btn-del"
+            >
+              <i class="layui-icon layui-icon-close"></i>删除
+            </button>
+          </div>
+        </div>
+      {{#  }); }}
+    </script>
+    <script
+      src="./js/third/layui-v2.5.5/layui/layui.js"
+      charset="utf-8"
+    ></script>
+    <script src="./js/configProduct.js"></script>
+  </body>
+</html>
