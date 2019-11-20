@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>推荐清单查询</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link
+      rel="stylesheet"
+      href="./js/third/layui-v2.5.5/layui/css/layui.css"
+      media="all"
+    />
+    <link rel="stylesheet" href="./assets/styles/common.css" />
+  </head>
+  <body>
+    <div class="normal-page">
+      <div class="page-title">
+        策略推荐清单查询
+      </div>
+      <div class="page-body clearfix ">
+        <div class="layui-row  list-wrap">
+          <div class="layui-col-md4 layui-col-sm4 layui-col-xs6">
+            <div class="normal-part clearfix list-top1">
+              <div class="fl">
+                <p>已匹配</p>
+                <p><span class="num">32456</span><span>人</span></p>
+              </div>
+              <div class="fr list-icon"></div>
+            </div>
+          </div>
+          <div class="layui-col-md4 layui-col-sm4 layui-col-xs6">
+            <div class="normal-part clearfix list-top2">
+              <div class="fl">
+                <p>未匹配</p>
+                <p><span class="num">32456</span><span>人</span></p>
+              </div>
+              <div class="fr list-icon"></div>
+            </div>
+          </div>
+          <div class="layui-col-md4 layui-col-sm4 layui-col-xs6">
+            <div class="normal-part  clearfix list-top3">
+              <div class="fl">
+                <p>匹配率</p>
+                <p><span class="num">66</span><span>人</span></p>
+              </div>
+              <div class="fr list-icon"></div>
+            </div>
+          </div>
+        </div>
+        <div class="normal-part">
+          <div class="search-param-wrap">
+            <div id="default-wrap"></div>
+            <div id="extra-wrap"></div>
+            <div class="search-param-btn">
+              <button
+                type="button"
+                class="layui-btn layui-btn-sm layui-btn-submit"
+                onclick="searchHandle()"
+              >
+                查询
+              </button>
+            </div>
+            <div class="param-more down" onclick="toggleParam(this)">
+              更多 <span class="layui-icon layui-icon-down"></span>
+            </div>
+          </div>
+          <table class="layui-hide" id="table1"></table>
+        </div>
+      </div>
+    </div>
+    <script id="defaultList" type="text/html">
+      {{#  layui.each(d, function(index, item){ }}
+        <ul class="param-list clearfix layui-row">
+          <li class="param-title fl layui-col-md1 layui-col-sm1">{{item.title}}:</li>
+          <li class="layui-col-md11 layui-col-sm11">
+            <ul class="clearfix layui-row layui-col-space10">
+                {{#  layui.each(item.list, function(i, obj){ }}
+                <li class="param-item fl layui-col-md2 layui-col-sm2 " onclick="chooseParam(this,'{{item.key}}','{{obj.id}}')">
+                  <span>{{obj.title}}</span>
+                </li>
+                {{#  }); }}
+            </ul>
+          </li>
+        </ul>
+        {{#  }); }}
+    </script>
+    <script id="extraList" type="text/html">
+      {{#  layui.each(d, function(index, item){ }}
+        <ul class="param-list clearfix layui-row">
+          <li class="param-title fl layui-col-md1 layui-col-sm1">{{item.title}}:</li>
+          <li class="layui-col-md11 layui-col-sm11">
+            <ul class="clearfix layui-row layui-col-space10">
+                {{#  layui.each(item.list, function(i, obj){ }}
+                <li class="param-item fl layui-col-md2 layui-col-sm2" onclick="chooseParam(this,'{{item.key}}','{{obj.id}}')">
+                    <span>{{obj.title}}</span>
+                </li>
+                {{#  }); }}
+            </ul>
+          </li>
+        </ul>
+        {{#  }); }}
+    </script>
+    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+      <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <script
+      src="./js/third/layui-v2.5.5/layui/layui.js"
+      charset="utf-8"
+    ></script>
+    <script src="./js/recommendList.js"></script>
+  </body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>智能推荐</title>
+    <meta name="renderer" content="webkit" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <link
+      rel="stylesheet"
+      href="./js/third/layui-v2.5.5/layui/css/layui.css"
+      media="all"
+    />
+    <link rel="stylesheet" href="./assets/styles/common.css" />
+  </head>
+  <body>
+    <div class="normal-page">
+      <div class="page-body clearfix ">
+        <div class="normal-part">
+          <div class="step-title clearfix">
+            <div class="step-left-wrap fl">
+              <span class="step-num">01</span>
+              <span class="step-text">基本信息</span>
+            </div>
+          </div>
+          <form class="layui-form intelligentRecommend-form" lay-filter="form1">
+            <div class="layui-form-item middle">
+              <label class="layui-form-label">策略名称：</label>
+              <div class="layui-input-inline">
+                <input
+                  type="text"
+                  name="name"
+                  autocomplete="off"
+                  class="layui-input"
+                />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <div class="layui-inline">
+                <label class="layui-form-label">策略起止时间：</label>
+                <div class="layui-input-inline">
+                  <input
+                    type="text"
+                    class="layui-input"
+                    id="date1"
+                    name="date1"
+                  />
+                </div>
+              </div>
+              <span class="dateRange-linkText">到</span>
+              <div class="layui-inline">
+                <div class="layui-input-inline">
+                  <input
+                    type="text"
+                    class="layui-input  "
+                    id="date2"
+                    name="date2"
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">产品订购率大于：</label>
+              <div class="layui-input-inline clearfix">
+                <div id="slideWrap" class="demo-slider fl" name="gt"></div>
+                <div id="slideText" class="fr"></div>
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">用户产品订购量TOP：</label>
+              <div class="layui-input-inline">
+                <input
+                  type="text"
+                  name="top"
+                  autocomplete="off"
+                  class="layui-input"
+                />
+              </div>
+            </div>
+            <div class="layui-form-item">
+              <label class="layui-form-label">策略描述：</label>
+              <div class="layui-input-block">
+                <textarea name="describe" class="layui-textarea"></textarea>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div class="normal-part">
+          <div class="step-title clearfix">
+            <div class="step-left-wrap fl">
+              <span class="step-num">02</span>
+              <span class="step-text">客户群筛选</span>
+            </div>
+            <div class="step-right-wrap fr">
+              <button
+                type="button"
+                class="layui-btn layui-btn-sm layui-btn-add"
+              >
+                <i class="layui-icon layui-icon-add-1"></i>新增粉丝群
+              </button>
+              <div class="layui-input-inline search-input-wrap">
+                <input
+                  type="text"
+                  name="price_min"
+                  placeholder="搜索粉丝群名称"
+                  autocomplete="off"
+                  class="layui-input search-input"
+                />
+                <i
+                  class="layui-icon layui-icon-search"
+                  onclick="rendCustWrap()"
+                ></i>
+              </div>
+            </div>
+          </div>
+          <div id="selectWrap"></div>
+          <div id="cust-laypage"></div>
+        </div>
+        <div class="text-center">
+          <button
+            type="submit"
+            class="layui-btn layui-btn-submit"
+            lay-submit=""
+            lay-filter="submitForm1"
+          >
+            提交
+          </button>
+        </div>
+      </div>
+    </div>
+    <script id="selectHtml" type="text/html">
+      <div class="layui-row layui-col-space10">
+        {{#  layui.each(d.list, function(index, item){ }}
+        <div class="layui-col-md3 layui-col-sm4 layui-col-xs6">
+          <div class="custGroupContent " onclick="chooseCust(this,'{{item.title}}')">
+              <p class="custTitle">{{item.title}}</p>
+              <p class="custGroup-midWrap">
+                <span class="custNum">{{item.num}}</span
+                ><span class="unit">人</span>
+              </p>
+              <p class="clearfix">
+                <span class="custUser fl"
+                  ><i class="layui-icon layui-icon-username"></i
+                  >{{item.user}}</span
+                >
+                <a class="fr" href="javascript:;" onclick="toDetailCust(this,'{{item.title}}')">详情></a>
+              </p>
+            </div>
+        </div>
+        {{#  }); }}
+      </div>
+    </script>
+    <script
+      src="./js/third/layui-v2.5.5/layui/layui.js"
+      charset="utf-8"
+    ></script>
+    <script src="./js/intelligentRecommend.js"></script>
+  </body>
+</html>

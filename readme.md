@@ -11,3 +11,5 @@
 ##### code11-19
 
 - configProduct:产品配置页面
+- intelligentRecommend:智能推荐
+- recommendList:推荐清单查询

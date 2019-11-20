@@ -29,12 +29,12 @@
               <div class="layui-input-inline">
                 <input
                   type="text"
-                  name="title"
+                  name="product"
                   autocomplete="off"
                   class="layui-input"
                 />
               </div>
-              <i class="layui-icon layui-icon-search form-search-icon"></i>
+              <i class="layui-icon layui-icon-search  recommend-product"></i>
             </div>
             <div id="selectWrap"></div>
             <div class="layui-form-item">
@@ -77,14 +77,14 @@
     </div>
     <script id="selectHtml" type="text/html">
       {{#  layui.each(d.list, function(index, item){ }}
-      <div class="layui-form-item">
+      <div class="layui-form-item ">
           <label class="layui-form-label">{{#  if(index=== 0){ }}触点选择： {{#  } }}</label>
           <div class="layui-input-inline">
             <div class="config-select clearfix">
-                <select name="interest{{index}}" value="{{item}}">
+                <select name="contact{{index}}" value="{{item}}" data-index="{{index}}" lay-filter="selectItem">
                     <option value=""></option>
                     {{#  layui.each(d.optionList, function(i, option){ }}
-                      <option value="{{option.value}}">{{option.text}}</option>
+                      <option value="{{option.value}}" {{#  if(item== option.value){ }}selected {{#  } }}>{{option.text}}</option>
                     {{#  }); }}
                 </select>
                 <i class="layui-icon layui-icon-set config-btn"></i>
@@ -101,6 +101,7 @@
             <button
               type="button"
               class="layui-btn  layui-btn-sm  layui-btn-del"
+              data-index="{{index}}"
             >
               <i class="layui-icon layui-icon-close"></i>删除
             </button>

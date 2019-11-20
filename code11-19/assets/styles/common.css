@@ -49,7 +49,7 @@ body {
 .normal-page {
   padding: 20px;
   background: #f8f8fa;
-  height: 100%;
+  min-height: 100%;
 }
 
 .page-title {
@@ -87,26 +87,43 @@ body {
   width: 100%;
 }
 
-.form-search-icon {
-  line-height: 30px;
-  color: rgb(240, 145, 45);
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
+.step-title {
+  border-bottom: 1px solid #dddddd;
+  margin-bottom: 20px;
+  line-height: 24px;
 }
 
+.step-left-wrap {
+  border-bottom: 4px solid #dddddd;
+  padding: 0 40px 10px 0;
+}
 
+.step-title .step-num {
+  font-size: 24px;
+  color: #f0912d;
+  margin-right: 10px;
+}
+
+.step-title .step-title {
+  font-size: 16px;
+  color: #333;
+}
 
 /* reset layui */
 .layui-input,
 .layui-textarea {
   background-color: rgb(252, 252, 252);
   border-color: rgb(211, 211, 211);
+  color: #666;
 }
 
 .layui-input {
   height: 30px;
   line-height: 1;
+}
+
+.layui-textarea {
+  resize: none;
 }
 
 .layui-form-label {
@@ -142,11 +159,20 @@ body {
 }
 
 /**************************************** 产品配置页面 ****************************************/
+.recommend-product {
+  line-height: 30px;
+  color: rgb(240, 145, 45);
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
 .dateRange-linkText {
   display: inline-block;
   margin-right: 20px;
 }
-.config-btn{
+
+.config-btn {
   cursor: pointer;
 }
 
@@ -154,7 +180,8 @@ body {
   height: 30px;
   line-height: 30px;
   border: 1px solid rgb(211, 211, 211);
-  background-color: rgb(252, 252, 252);
+  background: rgb(252, 252, 252);
+  border-radius: 2px;
 }
 
 .config-select .layui-form-select {
@@ -168,4 +195,220 @@ body {
   height: 20px;
   margin-top: 5px;
   border-right: 1px solid rgb(196, 196, 196);
+}
+
+/**************************************** 智能推荐页面 ****************************************/
+
+.intelligentRecommend-form .layui-form-label {
+  width: 150px;
+}
+
+.layui-input-block {
+  margin-left: 180px;
+}
+
+.demo-slider {
+  width: 76%;
+  margin-top: 10px;
+}
+
+.search-input {
+  display: inline-block;
+  width: 160px;
+  font-size: 12px;
+}
+
+.search-input-wrap .layui-icon-search {
+  position: absolute;
+  top: 4px;
+  right: 8px;
+  cursor: pointer;
+}
+
+.custGroupContent {
+  border: 1px solid rgb(236, 230, 230);
+  border-radius: 5px;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 5px 5px 0px rgba(231, 231, 231, 0.75);
+  padding: 15px;
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+}
+
+.custGroupContent.active {
+  background-image: -moz-linear-gradient(-70deg, rgb(238, 183, 119) 0%, rgb(230, 112, 91) 100%);
+  background-image: -webkit-linear-gradient(-70deg, rgb(238, 183, 119) 0%, rgb(230, 112, 91) 100%);
+  background-image: -ms-linear-gradient(-70deg, rgb(238, 183, 119) 0%, rgb(230, 112, 91) 100%);
+  color: #fff;
+}
+
+.custGroupContent a {
+  color: inherit;
+}
+
+.custGroup-midWrap {
+  text-align: center;
+  line-height: 70px;
+}
+
+.custGroup-midWrap .custNum {
+  font-size: 24px;
+}
+
+.custGroup-midWrap.unit {
+  font-size: 12px;
+}
+
+/* 客户群筛选区域自定义分页样式 start*/
+#cust-laypage {
+  text-align: center;
+  margin-top: 20px;
+}
+
+#cust-laypage .layui-laypage a:not(.layui-laypage-prev),
+#cust-laypage .layui-laypage a:not(.layui-laypage-next),
+#cust-laypage .layui-laypage .layui-laypage-curr {
+  border-radius: 50%;
+  font-size: 0;
+  width: 10px;
+  height: 10px;
+  line-height: 30px;
+  padding: 0;
+  margin: 0 6px;
+  color: #d0d0d0;
+}
+
+#cust-laypage .layui-laypage a:not(.layui-laypage-prev),
+#cust-laypage .layui-laypage a:not(.layui-laypage-next) {
+  background: #e2e2e2;
+}
+
+#cust-laypage .layui-laypage a.layui-laypage-prev,
+#cust-laypage .layui-laypage a.layui-laypage-next {
+  font-size: 26px;
+  border-radius: 0;
+  background: #fff;
+  border: 0;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+}
+
+#cust-laypage .layui-laypage .layui-laypage-curr .layui-laypage-em {
+  border-radius: 50%;
+}
+
+.layui-laypage-next em,
+.layui-laypage-prev em {
+  font-size: inherit;
+}
+
+#cust-laypage .layui-laypage a:hover {
+  color: inherit;
+}
+
+#cust-laypage .layui-laypage .layui-laypage-spr {
+  border: 0;
+}
+
+/* 客户群筛选区域自定义分页样式 end*/
+
+
+/**************************************** 智能推荐列表查询页面 ****************************************/
+
+.recommendList {}
+
+.list-wrap {
+  color: #fff;
+  font-size: 18px;
+  margin: -20px
+}
+
+.list-wrap>* {
+  padding: 10px 20px;
+}
+
+.list-wrap .num {
+  font-size: 24px;
+}
+
+.list-top1 {
+  background: #dea271;
+}
+
+.list-top2 {
+  background: #78a6ea;
+}
+
+.list-top3 {
+  background: #6cc0b5;
+}
+
+.list-icon {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url('../icons/list-top.png') no-repeat;
+}
+
+.list-top1 .list-icon {
+  background-position: -10px -10px;
+}
+
+.list-top2 .list-icon {
+  background-position: -79px -10px;
+}
+
+.list-top3 .list-icon {
+  background-position: -10px -77px;
+}
+
+.search-param-wrap {
+  border: 1px solid #dadada;
+  padding: 10px;
+  position: relative;
+  margin-bottom: 60px;
+}
+
+.param-more {
+  position: absolute;
+  border: 1px solid #dadada;
+  padding: 10px 50px;
+  bottom: -42px;
+  left: 50%;
+  margin-left: -75px;
+  border-top-color: transparent;
+  z-index: 100;
+  background: #fff;
+  cursor: pointer;
+}
+
+.search-param-btn {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.param-list {
+  font-size: 14px;
+  line-height: 30px;
+  color: #333;
+  border-bottom: 1px solid #dadada;
+  padding: 5px 10px;
+}
+
+.param-title {
+  font-weight: bold;
+}
+
+.param-item {
+  cursor: pointer;
+}
+
+.param-item.active span {
+  color: #fff;
+  background: #f0912d;
+  border-radius: 5px;
+  padding: 0 10px;
+  display: inline-block;
 }
