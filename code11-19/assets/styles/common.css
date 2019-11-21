@@ -5,6 +5,8 @@ body {
   font-size: 14px;
   color: #666;
   height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 
@@ -427,4 +429,9 @@ body {
 
 .productText {
   color: #369c22;
+}
+
+.param-list-wrap {
+  max-height: 190px;
+  overflow-y: auto;
 }

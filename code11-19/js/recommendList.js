@@ -152,6 +152,29 @@ layui.use(['laytpl', 'jquery', 'table'], function () {
           }
 
         ]
+      },
+      {
+        title: '额外3',
+        key: 'extra3',
+        list: [
+          {
+            id: '1',
+            title: '套餐1'
+          },
+          {
+            id: '2',
+            title: '套餐2'
+          },
+          {
+            id: '3',
+            title: '套餐3'
+          },
+          {
+            id: '4',
+            title: '套餐4'
+          }
+
+        ]
       }
     ]
     laytpl(getTpl2).render(extraParamData, function (html) {
