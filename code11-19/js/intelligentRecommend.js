@@ -39,75 +39,27 @@ layui.use(['form', 'layedit', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'
   });
   window.rendCustWrap = function (page) {
     page = page || 1;
-    //顾客群数据
-    var custData = {
-      list: [
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
+    function f (i) {//顾客群数据
+      $.ajax({
+        url: '/mockData/custGroup.json',
+        data: {
+          page: i,
+          limit: 10,
+          name: $('#searchName').val() || ''
         },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
-        },
-        {
-          title: '大众高危BSS用户-1702',
-          num: 2890934,
-          user: '超级管理员'
+        type: 'GET',
+        success: function (data) {
+          var custData = {
+            list: data.data
+          }
+          var getTpl = selectHtml.innerHTML, selectWrap = document.getElementById('selectWrap');
+          laytpl(getTpl).render(custData, function (html) {
+            selectWrap.innerHTML = html;
+          });
         }
-      ]
+      })
     }
-    var getTpl = selectHtml.innerHTML, selectWrap = document.getElementById('selectWrap');
-    laytpl(getTpl).render(custData, function (html) {
-      selectWrap.innerHTML = html;
-    });
+    f(page)
     laypage.render({
       elem: 'cust-laypage',
       limit: 12,
@@ -118,8 +70,7 @@ layui.use(['form', 'layedit', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'
       next: '<em class="layui-icon layui-icon-right"></em>',
       jump: function (obj, first) {
         if (!first) {
-          console.log('当前点击==', obj.curr)
-          rendCustWrap(obj.curr)
+          f(obj.curr)
         }
       }
     });

@@ -158,6 +158,18 @@ body {
   padding: 0 30px;
 }
 
+.layui-table-page {
+  text-align: right;
+}
+
+.layui-laypage a:hover {
+  color: inherit;
+}
+
+.layui-table-cell {
+  height: auto;
+}
+
 /**************************************** 产品配置页面 ****************************************/
 .recommend-product {
   line-height: 30px;
@@ -304,7 +316,7 @@ body {
   font-size: inherit;
 }
 
-#cust-laypage .layui-laypage a:hover {
+.layui-laypage a:hover {
   color: inherit;
 }
 
@@ -411,4 +423,8 @@ body {
   border-radius: 5px;
   padding: 0 10px;
   display: inline-block;
+}
+
+.productText {
+  color: #369c22;
 }

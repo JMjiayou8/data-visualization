@@ -5,93 +5,183 @@
   "data": [
     {
       "param1": 10000,
-      "param2": "user-0",
+      "param2": "40",
       "param3": "畅越49元档",
       "param4": "1000",
       "param5": "300",
       "param6": "是",
-      "param7": 24
+      "param7": [
+        {
+          "productName": "产品A1",
+          "per": "40%"
+        },
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        }
+      ]
     },
     {
       "param1": 10001,
-      "param2": "user-1",
+      "param2": "41",
       "param3": "畅越29元档",
       "param4": "1001",
       "param5": "301",
       "param6": "是",
-      "param7": 58
+      "param7": [
+        {
+          "productName": "产品A1",
+          "per": "40%"
+        },
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        }
+      ]
     },
     {
       "param1": 10002,
-      "param2": "user-2",
+      "param2": "42",
       "param3": "畅越49元档",
       "param4": "1002",
       "param5": "302",
       "param6": "是",
-      "param7": 77
+      "param7": [
+        {
+          "productName": "产品A1",
+          "per": "40%"
+        },
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        }
+      ]
     },
     {
       "param1": 10003,
-      "param2": "user-3",
+      "param2": "43",
       "param3": "畅越49元档",
       "param4": "1003",
       "param5": "303",
       "param6": "是",
-      "param7": 157
+      "param7": [
+        {
+          "productName": "产品A1",
+          "per": "40%"
+        },
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        }
+      ]
     },
     {
       "param1": 10004,
-      "param2": "user-4",
+      "param2": "44",
       "param3": "畅越29元档",
       "param4": "1004",
       "param5": "304",
       "param6": "是",
-      "param7": 51
+      "param7": [
+        {
+          "productName": "产品A1",
+          "per": "40%"
+        },
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        }
+      ]
     },
     {
       "param1": 10005,
-      "param2": "user-5",
+      "param2": "45",
       "param3": "畅越49元档",
       "param4": "1005",
       "param5": "305",
       "param6": "是",
-      "param7": 68
+      "param7": [
+        {
+          "productName": "产品A1",
+          "per": "40%"
+        },
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        },
+        {
+          "productName": "产品A3",
+          "per": "10%"
+        }
+      ]
     },
     {
       "param1": 10006,
-      "param2": "user-6",
+      "param2": "46",
       "param3": "畅越49元档",
       "param4": "1006",
       "param5": "306",
       "param6": "是",
-      "param7": 37
+      "param7": [
+        {
+          "productName": "产品A1",
+          "per": "40%"
+        },
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        }
+      ]
     },
     {
       "param1": 10007,
-      "param2": "user-7",
+      "param2": "47",
       "param3": "畅越29元档",
       "param4": "1007",
       "param5": "307",
       "param6": "是",
-      "param7": 150
+      "param7": [
+        {
+          "productName": "产品A1",
+          "per": "40%"
+        },
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        }
+      ]
     },
     {
       "param1": 10008,
-      "param2": "user-8",
+      "param2": "48",
       "param3": "畅越29元档",
       "param4": "1008",
       "param5": "308",
       "param6": "是",
-      "param7": 133
+      "param7": [
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        }
+      ]
     },
     {
       "param1": 10009,
-      "param2": "user-9",
+      "param2": "49",
       "param3": "畅越49元档",
       "param4": "1009",
       "param5": "309",
       "param6": "是",
-      "param7": 25
+      "param7": [
+        {
+          "productName": "产品A1",
+          "per": "40%"
+        },
+        {
+          "productName": "产品A2",
+          "per": "30%"
+        }
+      ]
     }
   ]
 }

@@ -45,7 +45,7 @@
             <div class="normal-part  clearfix list-top3">
               <div class="fl">
                 <p>匹配率</p>
-                <p><span class="num">66</span><span>人</span></p>
+                <p><span class="num">66</span><span>%</span></p>
               </div>
               <div class="fr list-icon"></div>
             </div>
@@ -64,7 +64,7 @@
                 查询
               </button>
             </div>
-            <div class="param-more down" onclick="toggleParam(this)">
+            <div class="param-more " onclick="toggleParam(this)">
               更多 <span class="layui-icon layui-icon-down"></span>
             </div>
           </div>
@@ -103,6 +103,11 @@
           </li>
         </ul>
         {{#  }); }}
+    </script>
+    <script id="productList" type="text/html">
+      {{#  layui.each(d.param7, function(index, item){ }}
+      <p class="productText">{{item.productName}}:{{item.per}}</p>
+      {{#  }); }}
     </script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>

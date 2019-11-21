@@ -12,7 +12,7 @@ layui.use(['laytpl', 'jquery', 'table'], function () {
       { field: 'param4', title: '上月语音情况' },
       { field: 'param5', title: '上月流量', },
       { field: 'param6', title: '是否有宽带' },
-      { field: 'param7', title: '推荐产品明细' },
+      { field: 'param7', title: '推荐产品明细', templet: '#productList' },
     ]],
     page: {
       layout: ['prev', 'page', 'next', 'skip'], //自定义分页布局
