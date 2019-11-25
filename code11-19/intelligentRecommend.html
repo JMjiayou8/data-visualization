@@ -33,8 +33,9 @@
                 <input
                   type="text"
                   name="name"
-                  autocomplete="off"
                   class="layui-input"
+                  required
+                  lay-verify="required"
                 />
               </div>
             </div>
@@ -123,7 +124,7 @@
           <button
             type="submit"
             class="layui-btn layui-btn-submit"
-            lay-submit=""
+            lay-submit
             lay-filter="submitForm1"
           >
             提交

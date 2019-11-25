@@ -1,7 +1,6 @@
-layui.use(['form', 'layedit', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'], function () {
+layui.use(['form', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'], function () {
   var form = layui.form,
     layer = layui.layer,
-    layedit = layui.layedit,
     laydate = layui.laydate,
     laytpl = layui.laytpl,
     slider = layui.slider,
@@ -33,8 +32,8 @@ layui.use(['form', 'layedit', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'
   // 提交
   form.on('submit(submitForm1)', function (data) {
     var data = form.val('form1');
-    data.sliderText = initSlideText;
-    alert(JSON.stringify(data, null, 4));
+    // data.sliderText = initSlideText;
+    // alert(JSON.stringify(data, null, 4));
     return false;
   });
   window.rendCustWrap = function (page) {
@@ -75,7 +74,7 @@ layui.use(['form', 'layedit', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'
       }
     });
   }
-  rendCustWrap();
+  // rendCustWrap();
 
   window.chooseCust = function (obj, title) {
     $('.custGroupContent').removeClass('active')

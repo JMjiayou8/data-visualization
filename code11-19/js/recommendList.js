@@ -4,7 +4,7 @@ layui.use(['laytpl', 'jquery', 'table'], function () {
     table = layui.table;
   table.render({
     elem: '#table1',
-    url: '/mockData/table.json',
+    data: [],
     cols: [[
       { field: 'param1', title: '用户编码' },
       { field: 'param2', title: 'ARPU' },
@@ -12,7 +12,7 @@ layui.use(['laytpl', 'jquery', 'table'], function () {
       { field: 'param4', title: '上月语音情况' },
       { field: 'param5', title: '上月流量', },
       { field: 'param6', title: '是否有宽带' },
-      { field: 'param7', title: '推荐产品明细', templet: '#productList' },
+      { field: 'param7', title: '推荐产品明细', templet: '#productList', width: 300 },
     ]],
     page: {
       layout: ['prev', 'page', 'next', 'skip'], //自定义分页布局
@@ -25,11 +25,11 @@ layui.use(['laytpl', 'jquery', 'table'], function () {
     parent.find('.param-item').removeClass('active')
     $(obj).addClass('active');
     queryParam[key] = val
-    console.log(queryParam)
   }
   // 查询事件
   window.searchHandle = function () {
     table.reload('table1', {
+      url: '/mockData/table.json',
       where: queryParam
     })
   }
