@@ -19,14 +19,14 @@
   <body>
     <div class="normal-page">
       <div class="page-body clearfix ">
-        <div class="normal-part">
-          <div class="step-title clearfix">
-            <div class="step-left-wrap fl">
-              <span class="step-num">01</span>
-              <span class="step-text">基本信息</span>
+        <form class="layui-form intelligentRecommend-form" lay-filter="form1">
+          <div class="normal-part">
+            <div class="step-title clearfix">
+              <div class="step-left-wrap fl">
+                <span class="step-num">01</span>
+                <span class="step-text">基本信息</span>
+              </div>
             </div>
-          </div>
-          <form class="layui-form intelligentRecommend-form" lay-filter="form1">
             <div class="layui-form-item middle">
               <label class="layui-form-label">策略名称：</label>
               <div class="layui-input-inline">
@@ -67,7 +67,7 @@
               <label class="layui-form-label">产品订购率大于：</label>
               <div class="layui-input-inline clearfix">
                 <div id="slideWrap" class="demo-slider fl" name="gt"></div>
-                <div id="slideText" class="fr"></div>
+                <div id="slideText" class="fr slideText"></div>
               </div>
             </div>
             <div class="layui-form-item">
@@ -87,49 +87,49 @@
                 <textarea name="describe" class="layui-textarea"></textarea>
               </div>
             </div>
-          </form>
-        </div>
-        <div class="normal-part">
-          <div class="step-title clearfix">
-            <div class="step-left-wrap fl">
-              <span class="step-num">02</span>
-              <span class="step-text">客户群筛选</span>
-            </div>
-            <div class="step-right-wrap fr">
-              <button
-                type="button"
-                class="layui-btn layui-btn-sm layui-btn-add"
-              >
-                <i class="layui-icon layui-icon-add-1"></i>新增粉丝群
-              </button>
-              <div class="layui-input-inline search-input-wrap">
-                <input
-                  id="searchName"
-                  type="text"
-                  placeholder="搜索粉丝群名称"
-                  autocomplete="off"
-                  class="layui-input search-input"
-                />
-                <i
-                  class="layui-icon layui-icon-search"
-                  onclick="rendCustWrap()"
-                ></i>
+          </div>
+          <div class="normal-part">
+            <div class="step-title clearfix">
+              <div class="step-left-wrap fl">
+                <span class="step-num">02</span>
+                <span class="step-text">客户群筛选</span>
+              </div>
+              <div class="step-right-wrap fr">
+                <button
+                  type="button"
+                  class="layui-btn layui-btn-sm layui-btn-add"
+                >
+                  <i class="layui-icon layui-icon-add-1"></i>新增粉丝群
+                </button>
+                <div class="layui-input-inline search-input-wrap">
+                  <input
+                    id="searchName"
+                    type="text"
+                    placeholder="搜索粉丝群名称"
+                    autocomplete="off"
+                    class="layui-input search-input"
+                  />
+                  <i
+                    class="layui-icon layui-icon-search"
+                    onclick="rendCustWrap()"
+                  ></i>
+                </div>
               </div>
             </div>
+            <div id="selectWrap"></div>
+            <div id="cust-laypage"></div>
           </div>
-          <div id="selectWrap"></div>
-          <div id="cust-laypage"></div>
-        </div>
-        <div class="text-center">
-          <button
-            type="submit"
-            class="layui-btn layui-btn-submit"
-            lay-submit
-            lay-filter="submitForm1"
-          >
-            提交
-          </button>
-        </div>
+          <div class="text-center">
+            <button
+              type="submit"
+              class="layui-btn layui-btn-submit"
+              lay-submit
+              lay-filter="submitForm1"
+            >
+              提交
+            </button>
+          </div>
+        </form>
       </div>
     </div>
     <script id="selectHtml" type="text/html">

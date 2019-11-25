@@ -222,8 +222,13 @@ body {
 }
 
 .demo-slider {
-  width: 76%;
+  width: 72%;
   margin-top: 10px;
+}
+
+.slideText {
+  min-width: 40px;
+  text-align: left;
 }
 
 .search-input {
