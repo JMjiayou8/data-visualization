@@ -78,12 +78,12 @@
     <script id="defaultList" type="text/html">
       {{#  layui.each(d, function(index, item){ }}
         <ul class="param-list clearfix layui-row">
-          <li class="param-title fl layui-col-md1 layui-col-sm1">{{item.title}}:</li>
-          <li class="layui-col-md11 layui-col-sm11">
+          <li class="param-title fl layui-col-md2 layui-col-sm2">{{item.title}}:</li>
+          <li class="layui-col-md10 layui-col-sm10">
             <ul class="clearfix layui-row layui-col-space10">
                 {{#  layui.each(item.list, function(i, obj){ }}
-                <li class="param-item fl layui-col-md2 layui-col-sm2 " onclick="chooseParam(this,'{{item.key}}','{{obj.id}}')">
-                  <span>{{obj.title}}</span>
+                <li class="param-item fl layui-col-md2 layui-col-sm3 " onclick="chooseParam(this,'{{item.key}}','{{obj.id}}')">
+                  <span onselectstart="return false;">{{obj.title}}</span>
                 </li>
                 {{#  }); }}
             </ul>
@@ -94,12 +94,12 @@
     <script id="extraList" type="text/html">
       {{#  layui.each(d, function(index, item){ }}
         <ul class="param-list clearfix layui-row">
-          <li class="param-title fl layui-col-md1 layui-col-sm1">{{item.title}}:</li>
-          <li class="layui-col-md11 layui-col-sm11">
+          <li class="param-title fl layui-col-md2 layui-col-sm2">{{item.title}}:</li>
+          <li class="layui-col-md10 layui-col-sm10">
             <ul class="clearfix layui-row layui-col-space10">
                 {{#  layui.each(item.list, function(i, obj){ }}
-                <li class="param-item fl layui-col-md2 layui-col-sm2" onclick="chooseParam(this,'{{item.key}}','{{obj.id}}')">
-                    <span>{{obj.title}}</span>
+                <li class="param-item fl layui-col-md2 layui-col-sm3" onclick="chooseParam(this,'{{item.key}}','{{obj.id}}')">
+                    <span onselectstart="return false;">{{obj.title}}</span>
                 </li>
                 {{#  }); }}
             </ul>

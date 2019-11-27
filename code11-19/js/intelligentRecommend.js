@@ -32,8 +32,10 @@ layui.use(['form', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'], function
   // 提交
   form.on('submit(submitForm1)', function (data) {
     var data = form.val('form1');
-    // data.sliderText = initSlideText;
-    // alert(JSON.stringify(data, null, 4));
+    data.sliderText = initSlideText;
+    alert(JSON.stringify(data, null, 4));
+    // location.reload()
+    $('#resetForm').click();
     return false;
   });
   window.rendCustWrap = function (page) {

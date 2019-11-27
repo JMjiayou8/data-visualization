@@ -244,6 +244,8 @@ body {
   cursor: pointer;
 }
 
+
+
 .custGroupContent {
   border: 1px solid rgb(236, 230, 230);
   border-radius: 5px;
@@ -390,6 +392,18 @@ body {
   margin-bottom: 60px;
 }
 
+.search-param-wrap::after {
+  content: '';
+  width: 150px;
+  display: block;
+  height: 1px;
+  position: absolute;
+  bottom: -1px;
+  background: white;
+  left: 50%;
+  margin-left: -75px;
+}
+
 .param-more {
   position: absolute;
   border: 1px solid #dadada;
@@ -418,6 +432,10 @@ body {
 
 .param-title {
   font-weight: bold;
+  max-width: 120px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .param-item {

@@ -21,10 +21,10 @@ layui.use(['laytpl', 'jquery', 'table'], function () {
   });
   var queryParam = {}//搜索参数
   window.chooseParam = function (obj, key, val) {
-    var parent = $(obj).parents('.param-list');
-    parent.find('.param-item').removeClass('active')
-    $(obj).addClass('active');
-    queryParam[key] = val
+    $(obj).siblings().removeClass('active');
+    $(obj).toggleClass('active');
+    queryParam[key] = $(obj).hasClass('active') ? val : ''
+    // queryParam[key] = val
   }
   // 查询事件
   window.searchHandle = function () {
