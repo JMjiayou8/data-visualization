@@ -7,13 +7,19 @@ layui.use(['form', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'], function
     laypage = layui.laypage,
     $ = layui.jquery;
 
-
+  var chooseCustID = 24;
+  var dateFormat='yyyy/MM/dd'
+  var today=formatDate(new Date(),dateFormat)
   //日期
   laydate.render({
-    elem: '#date1'
+    elem: '#date1',
+    min: today,
+    format:dateFormat
   })
   laydate.render({
-    elem: '#date2'
+    elem: '#date2',
+    min: today,
+    format:dateFormat
   })
   //滑块
   var initSlideText = 36;
@@ -33,9 +39,13 @@ layui.use(['form', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'], function
   form.on('submit(submitForm1)', function (data) {
     var data = form.val('form1');
     data.sliderText = initSlideText;
-    alert(JSON.stringify(data, null, 4));
-    // location.reload()
-    $('#resetForm').click();
+    // $('#resetForm').click();
+    $('#aaa').hide();
+    $('#bbb').show();
+    // $(document).scrollTop(0)
+ 
+    $("html", window.parent.document).animate({scrollTop:0},100);
+    $("html", window.document).animate({scrollTop:0},100);
     return false;
   });
   window.rendCustWrap = function (page) {
@@ -51,7 +61,8 @@ layui.use(['form', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'], function
         type: 'GET',
         success: function (data) {
           var custData = {
-            list: data.data
+            list: data.data,
+            chooseCustID: chooseCustID
           }
           var getTpl = selectHtml.innerHTML, selectWrap = document.getElementById('selectWrap');
           laytpl(getTpl).render(custData, function (html) {
@@ -76,18 +87,20 @@ layui.use(['form', 'laydate', 'laytpl', 'jquery', 'slider', 'laypage'], function
       }
     });
   }
-  // rendCustWrap();
+  rendCustWrap();
 
-  window.chooseCust = function (obj, title) {
+  window.chooseCust = function (obj, id) {
     $('.custGroupContent').removeClass('active')
     $(obj).addClass('active')
+    chooseCustID = id;
   }
 
-  window.toDetailCust = function (obj, title) {
+  window.toDetailCust = function (obj, id) {
     event.stopPropagation();
     layer.open({
       title: title + '详情查看',
       content: title + '详情查看',
     });
   }
+
 })

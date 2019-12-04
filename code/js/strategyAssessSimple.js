@@ -18,7 +18,7 @@ var showPartArr = [2, 3, 9];
 // 配置按钮模块
 var templeLi = '<li class="config-item fl {isChoose}"><button {onclick} {disabled}>{text}</button></li>'
 // 图表模块
-var partHtml = '<div class="normal-part per2 "  style="display:block;">' +
+var partHtml = '<div class="normal-part per22 "  style="display:block;">' +
   '<div class="part-title-wrap"><p class="part-title">{partTitle}</p></div>' +
   '<div class="part-body "><div id="{chartId}" style="width: 100%;height: 280px;"></div></div></div>'
 

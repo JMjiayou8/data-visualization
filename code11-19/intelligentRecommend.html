@@ -18,8 +18,8 @@
   </head>
   <body>
     <div class="normal-page">
-      <div class="page-body clearfix ">
-        <form class="layui-form intelligentRecommend-form" lay-filter="form1">
+      <div class="page-body clearfix" >
+        <form class="layui-form intelligentRecommend-form" lay-filter="form1" >
           <div class="normal-part">
             <div class="step-title clearfix">
               <div class="step-left-wrap fl">
@@ -34,8 +34,6 @@
                   type="text"
                   name="name"
                   class="layui-input"
-                  required
-                  lay-verify="required"
                 />
               </div>
             </div>
@@ -137,7 +135,7 @@
       <div class="layui-row layui-col-space10">
         {{#  layui.each(d.list, function(index, item){ }}
         <div class="layui-col-md3 layui-col-sm4 layui-col-xs6">
-          <div class="custGroupContent " onclick="chooseCust(this,'{{item.title}}')">
+          <div class="custGroupContent {{item.id==d.chooseCustID?'active':''}}" onclick="chooseCust(this,'{{item.id}}')">
               <p class="custTitle">{{item.title}}</p>
               <p class="custGroup-midWrap">
                 <span class="custNum">{{item.num}}</span
@@ -159,6 +157,7 @@
       src="./js/third/layui-v2.5.5/layui/layui.js"
       charset="utf-8"
     ></script>
+    <script src="./js/common.js"></script>
     <script src="./js/intelligentRecommend.js"></script>
   </body>
 </html>

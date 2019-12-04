@@ -84,10 +84,12 @@
                 <select name="contact{{index}}" value="{{item}}" data-index="{{index}}" lay-filter="selectItem">
                     <option value=""></option>
                     {{#  layui.each(d.optionList, function(i, option){ }}
-                      <option value="{{option.value}}" {{#  if(item== option.value){ }}selected {{#  } }}>{{option.text}}</option>
+                      <option value="{{option.value}}" {{#  if(item== option.value){ }}selected {{#  } }}
+                      {{#  if(d.list.indexOf(option.value)>-1){ }}disabled {{#  } }}>{{option.text}}</option>
                     {{#  }); }}
                 </select>
-                <i class="layui-icon layui-icon-set config-btn"></i>
+                <input type="hidden" value="" id="chnl{{index}}" data-chnl="chnl{{item}}">
+                <i class="layui-icon layui-icon-set config-btn" bindIndex="{{index}}"></i>
             </div>
           </div>
           <div class="layui-input-inline">
@@ -113,6 +115,7 @@
       src="./js/third/layui-v2.5.5/layui/layui.js"
       charset="utf-8"
     ></script>
+    <script src="./js/common.js"></script>
     <script src="./js/configProduct.js"></script>
   </body>
 </html>
