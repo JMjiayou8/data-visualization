@@ -1,14 +1,24 @@
-$(function () {
-  rendTimeLine(new Date().getMonth())
-  renderPage()
-})
+// $(function () {
+//   rendTimeLine(new Date().getMonth())
+//   renderPage()
+// })
 
 // 时间轴点击事件
-function clickTimeLine (i, month) {
-  console.log(month)
-  rendTimeLine(i)
-  renderPage()
-}
+// function clickTimeLine (i, month) {
+//   console.log(month)
+//   rendTimeLine(i)
+//   renderPage()
+// }
+
+$(function() {
+  var startMonth = '2019-06'
+  wholeMonthList = getWholeMonth(startMonth)
+  rendList()
+})
+// function renderPage(param) {
+//   //根据月份渲染数据
+//   console.log('渲染页面,月份参数:' + param.month)
+// }
 
 function renderPage () {
   //todo 数据操作

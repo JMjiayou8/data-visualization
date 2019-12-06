@@ -1,0 +1,117 @@
+
+/**************************************** 时间轴区域 ****************************************/
+.timeLine-wrapper {
+  width: 100%;
+  padding: 0 30px;
+  float: left;
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1
+}
+
+.timeLine-body {
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  overflow: hidden;
+  z-index: 1
+}
+
+.timeLine-body:after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #dedede;
+  position: absolute;
+  top: 30px;
+  left: 0;
+  z-index: 0
+}
+
+.timeLine-slide {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 50px;
+  box-sizing: content-box;
+}
+
+.timeLine-item {
+  position: relative;
+  float: left;
+  cursor: pointer;
+  width: 8.3%;
+
+}
+
+.timeLine-slide .timeLine-item>* {
+  text-align: center
+}
+
+.timeLine-item p {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 30px;
+  color: #afafaf;
+  opacity: .7;
+  transition: all .1s
+}
+
+.timeLine-item i {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background: #a6a7a7;
+  border: 3px solid #dfdfdf;
+  border-radius: 50%;
+  left: 50%;
+  margin-left: -7px;
+  top: 20px;
+  z-index: 3
+}
+
+
+/* .timeLine-item:hover p, */
+.timeLine-item.active p {
+  font-size: 16px;
+  line-height: 20px;
+  color: #666;
+}
+
+/* .timeLine-item:hover i, */
+.timeLine-item.active i {
+  background: #ff9f0e;
+  border-color: #ff9f0e;
+}
+
+.timeLine-prev,
+.timeLine-next {
+  position: absolute;
+  margin-top: -22px;
+  cursor: pointer;
+}
+
+.timeLine-prev {
+  width: 30px;
+  height: 30px;
+  left: 0;
+  top: 38px;
+  background: url('./icons/timeLine.png') -10px -10px;
+}
+
+.timeLine-next {
+  width: 30px;
+  height: 30px;
+  right: 0;
+  top: 38px;
+  background: url('./icons/timeLine.png') -59px -10px;
+}
+.disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}

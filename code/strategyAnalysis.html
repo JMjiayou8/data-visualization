@@ -7,6 +7,7 @@
     <title>策略分析</title>
     <link rel="stylesheet" href="./js/third/layui-v2.5.5/layui/css/layui.css" />
     <link rel="stylesheet" href="./assets/styles/common.css" />
+    <link rel="stylesheet" href="./js/timeline/timeline.css">
   </head>
   <body>
     <div class="normal-page">
@@ -52,13 +53,17 @@
             </li>
           </ol>
         </div>
-        <div class="timeLine-wrapper">
+        <!-- <div class="timeLine-wrapper">
           <div class="timeLine-body ">
             <ul class="timeLine-slide"></ul>
           </div>
           <div class="timeLine-prev" onclick="prevTime()"></div>
           <div class="timeLine-next" onclick="nextTime()"></div>
-        </div>
+        </div> -->
+
+        <div class="timeLine-wrapper" id="timeLine"></div>
+
+        
         <ul class="strategy-overview">
           <li class="normal-part per4 clearfix overview1">
             <div class="fl">
@@ -180,22 +185,7 @@
     <script src="./js/third/echarts/echarts.min.js"></script>
     <script src="./js/common.js"></script>
     <script src="./js/strategyAnalysis.js"></script>
-    <script src="./js/third/layui-v2.5.5/layui/layui.js"></script>
-    <script>
-      layui.use('layer', function() {
-        var $ = layui.jquery,
-          layer = layui.layer //独立版的layer无需执行这一句
-        $('#aaa').click(function() {
-          layer.open({
-            type: 2,
-            title: 'layer mobile页',
-            shadeClose: true,
-            shade: 0.8,
-            area: ['60%', '600px'],
-            content: './strategy.html' //iframe的url
-          })
-        })
-      })
-    </script>
+    <script src="./js/timeline/timeLine.js"></script>
+    
   </body>
 </html>
