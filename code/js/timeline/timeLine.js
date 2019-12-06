@@ -2,6 +2,7 @@ var showMonthList = [];
 var wholeMonthList;
 var curMonth=new Date();
 var activeMonth =formatterDate(curMonth) ;
+// 获取全部月份数据
 var getWholeMonth = function(start) {
   var year = new Date(start).getFullYear();
   var month = new Date(start).getMonth()+1;
@@ -14,7 +15,7 @@ var getWholeMonth = function(start) {
   }
   return re
 }
-
+//渲染时间轴
 function rendList (month , offset ) {
   activeMonth = month||formatterDate(curMonth);
   offset=offset||0
