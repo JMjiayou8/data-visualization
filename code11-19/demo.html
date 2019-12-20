@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./js/third/layui-v2.5.5/layui/css/layui.css" media="all" />
+  <style>
+    /* 公共样式类  用项目自带 不需要引入*/
+    html,
+    body {
+      font-family: "MicrosoftYaHei";
+      font-size: 14px;
+      color: #666;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+
+    .clearfix:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: " ";
+      clear: both;
+      height: 0;
+    }
+
+    .clearfix {
+      display: inline-table;
+    }
+
+    .fl {
+      float: left;
+    }
+
+    .fr {
+      float: right;
+    }
+
+    /* 当前页面样式  需要引入*/
+    .selectWrap {
+      border: 1px solid #D2D2D2;
+      border-radius: 2px;
+      padding: 5px 20px;
+      width: 700px;
+    }
+
+    .selectWrap .item {
+      height: 52px;
+    }
+
+    .item .card {
+      border: 1px solid #D2D2D2;
+      border-radius: 5px;
+      color: #333;
+      padding: 10px 20px;
+      font-size: 14px;
+      line-height: 20px;
+      margin-bottom: 10px;
+      display: inline-block;
+      text-align: center;
+      min-width: 100px;
+      cursor: pointer;
+    }
+
+    .item .connect-wrap {
+      width: 200px;
+      height: 100%;
+      display: inline-block;
+    }
+
+    .item .connect-wrap .line {
+      width: 180px;
+      height: 1px;
+      display: inline-block;
+      background: #D2D2D2;
+      position: relative;
+      top: 6px;
+    }
+
+    .item .connect-wrap .corner {
+      width: 140px;
+      height: 52px;
+      display: inline-block;
+      border: 1px solid #D2D2D2;
+      border-width: 0 0 1px 1px;
+      position: relative;
+      top: -30px;
+      left: 40px;
+    }
+
+    .item .connect-wrap .line:after,
+    .item .connect-wrap .corner::after {
+      content: '';
+      width: 0;
+      height: 0;
+      border: 10px solid transparent;
+      border-left-color: #D2D2D2;
+      display: block;
+      position: absolute;
+      right: -20px;
+      top: -10px;
+    }
+
+    .item .connect-wrap .corner::after {
+      top: auto;
+      bottom: -10px;
+    }
+
+    .item .layui-btn-add {
+      background: #61a1dd;
+    }
+
+    .item .layui-btn-del {
+      background: #fa4938;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="selectWrap" class="selectWrap clearfix">
+  </div>
+  <script id="selectHtml" type="text/html">
+    <ul class="fl">
+      <li class="item">
+        <div class="card">{{d.leftData.text}}</div>
+      </li>
+    </ul>
+    <ul class="fl">
+      {{#  layui.each(d.rightData, function(index, item){ }}
+      <li class="item">
+        <p class="connect-wrap">
+          {{#  if(index === 0){ }}
+          <span class="line"></span>
+          {{#  } else { }}
+          <span class="corner"></span>
+          {{#  } }}
+        </p>
+      </li>
+      {{#  }); }}
+    </ul>
+    <ul class="fl">
+      {{#  layui.each(d.rightData, function(index, item){ }}
+      <li class="item">
+        <div class="card">{{item.text}}</div>
+        <button type="button" class="layui-btn  layui-btn-sm  layui-btn-add" data-index="{{index}}">
+          <i class="layui-icon layui-icon-add-1"></i> 添加
+        </button>
+        <button type="button" class="layui-btn  layui-btn-sm  layui-btn-del" data-index="{{index}}">
+          <i class="layui-icon layui-icon-close"></i>删除
+        </button>
+      </li>
+      {{#  }); }}
+    </ul>
+  </script>
+  <script src="./js/third/layui-v2.5.5/layui/layui.js" charset="utf-8"></script>
+  <script>
+    layui.use(['laytpl', 'jquery', 'layer'], function () {
+      var laytpl = layui.laytpl,
+        layer = layui.layer,
+        $ = layui.jquery;
+      //渲染触点选择区域
+      var pageData = { //触点数据
+        leftData: {
+          text: '批量推送'
+        },
+        rightData: [{
+            text: '外呼1',
+          },
+          {
+            text: '外呼2'
+          }
+        ]
+      }
+
+      function renderSelectWrap() {
+        var getTpl = selectHtml.innerHTML,
+          selectWrap = document.getElementById('selectWrap');
+        laytpl(getTpl).render(pageData, function (html) {
+          selectWrap.innerHTML = html;
+        });
+      }
+      renderSelectWrap()
+      // 添加一行
+      $(document).on('click', '.layui-btn-add', function () {
+        pageData.rightData.push({
+          text: '触点' + (Math.random() * 100).toFixed(0)
+        })
+        renderSelectWrap()
+      })
+      // 删除一行
+      $(document).on('click', '.layui-btn-del', function (evt) {
+        var index = $(evt.target).data('index')
+        if (pageData.rightData.length > 1) {
+          pageData.rightData.splice(index, 1)
+          renderSelectWrap()
+        } else {
+          layer.msg('至少保留一条配置');
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>
