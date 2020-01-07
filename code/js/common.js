@@ -782,6 +782,13 @@ function rendRadarChart (id, data) {
         color: "#818181",
         padding: [0, 20]
       },
+      avatitle: {
+        width: 40,
+        height: 50,
+        fontSize: 16,
+        color: "#818181",
+        padding: [0, 20]
+      },
       value: {
         width: 50,
         height: 50,
@@ -800,7 +807,7 @@ function rendRadarChart (id, data) {
       formatter: function () {
         var arr = [];
         for (var i = 0; i < data.length; i++) {
-          arr.push("{title|" + data[i].text + '得分:' + "}{value|" + data[i].value + "}\n")
+          arr.push("{title|" + data[i].text + '得分:' + "}{value|" + data[i].value + "}{avatitle|平均得分:}{value|" + data[i].avaval + "}\n")
         }
         return arr.join('')
       },

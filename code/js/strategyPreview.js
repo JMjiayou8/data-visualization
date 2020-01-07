@@ -5,9 +5,9 @@ $(function () {
 function rendPage () {
   //todo ajax请求渲染页面
   var data = [
-    { text: '价值提升', max: 10, value: 1.5 },
-    { text: '执行成本', max: 10, value: 3.6 },
-    { text: '营销规模', max: 10, value: 8.3 },
+    { text: '价值提升', max: 10, value: 1.5, avaval: 2 },
+    { text: '执行成本', max: 10, value: 3.6, avaval: 3 },
+    { text: '营销规模', max: 10, value: 8.3, avaval: 4 },
   ]
   rendRadarChart('chart1', data)
   var lineAxisData1 = ['2018-04', '2018-05', '2018-06', '2018-07', '2018-08', '2018-09', '2018-10']
