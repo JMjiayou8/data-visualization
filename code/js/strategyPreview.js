@@ -12,7 +12,10 @@ function rendPage () {
   rendRadarChart('chart1', data)
   var lineAxisData1 = ['2018-04', '2018-05', '2018-06', '2018-07', '2018-08', '2018-09', '2018-10']
   var lineData1 = [820, 32, 901, 934, 190, 1330, 1320]
-  rendSingleLineChart2('chart2', lineAxisData1, lineData1)
+  var chart2 = rendSingleLineChart2('chart2', lineAxisData1, lineData1)
+  chart2.on('click', function (param) {
+    console.log(param, param.data, param.name)
+  })
   var pieData = [
     { name: '200以上', value: 122, perNum: 39 },
     { name: '100-200', value: 12, perNum: 39 },

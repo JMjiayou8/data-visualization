@@ -520,16 +520,16 @@ function rendPicBarChart (id, yAxisData, data, width) {
 }
 // 目标用户ARPU值分布分析
 function rendAssessPie (id, data, title) {
-  if(document.getElementById(id)){
-    let width=parseFloat(getComputedStyle(document.getElementById(id)).width) ;
+  if (document.getElementById(id)) {
+    let width = parseFloat(getComputedStyle(document.getElementById(id)).width);
     var center = ['25%', '45%']//饼图中心点位置
-    var radius1=['20%', '62%'],radius2=['64%', '65%'];//饼图半径
-    var legendX='right',legendY='center';//图例位置
-    if(width<520){//图形宽度临界值
-       center = ['50%', '25%']
-       legendX='center';legendY='50%'
-       radius1=['20%','40%'];radius2=['42%','43%']
-       $('#' + id).height('400px')
+    var radius1 = ['20%', '62%'], radius2 = ['64%', '65%'];//饼图半径
+    var legendX = 'right', legendY = 'center';//图例位置
+    if (width < 520) {//图形宽度临界值
+      center = ['50%', '25%']
+      legendX = 'center'; legendY = '50%'
+      radius1 = ['20%', '40%']; radius2 = ['42%', '43%']
+      $('#' + id).height('400px')
     }
     var chart8 = echarts.init(document.getElementById(id))
     var pieLegendStyle = {
@@ -550,7 +550,7 @@ function rendAssessPie (id, data, title) {
     var option = {
       title: getTitleConfig(title),
       color: ['#4381d2', '#ba78d6', '#e1b941', '#56be97'],
-      legend: { 
+      legend: {
         x: legendX,
         y: legendY,
         orient: 'vertical',
@@ -565,7 +565,7 @@ function rendAssessPie (id, data, title) {
           return "{title|" + name + "}{value|" + value + '万元' + "}{value|" + per + '%' + "}"
         },
         textStyle: pieLegendStyle,
-  
+
       },
       calculable: true,
       series: [
@@ -575,7 +575,7 @@ function rendAssessPie (id, data, title) {
           radius: radius1,
           center: center,
           roseType: 'radius',
-          animation:false,
+          animation: false,
           label: {
             normal: {
               show: false
@@ -599,7 +599,7 @@ function rendAssessPie (id, data, title) {
           type: 'pie',
           radius: radius2,
           center: center,
-          animation:false,
+          animation: false,
           roseType: 'radius',
           label: {
             normal: {
@@ -616,17 +616,17 @@ function rendAssessPie (id, data, title) {
             { value: 1, name: '' },
           ]
         },
-  
+
       ]
     };
     chart8.setOption(option)
-    chart8.resize() 
+    chart8.resize()
   }
-  
+
 }
 //目标用户流量分析
 function rendSingleBarChart2 (id, xAxisData, data, title) {
-  if(document.getElementById(id)){
+  if (document.getElementById(id)) {
     var chart8 = echarts.init(document.getElementById(id))
     // $('#' + id).width(width + 'px')
     var option = {
@@ -682,7 +682,7 @@ function rendSingleBarChart2 (id, xAxisData, data, title) {
           name: title,
           data: data,
           type: 'bar',
-          animation:false,
+          animation: false,
           barWidth: 30,
           itemStyle: {
             barBorderRadius: [5, 5, 0, 0]
@@ -696,7 +696,7 @@ function rendSingleBarChart2 (id, xAxisData, data, title) {
 }
 // 目标用户年龄段分布分析
 function rendMultiLineChart (id, xAxisData, data, title) {
-  if(document.getElementById(id)){
+  if (document.getElementById(id)) {
     var chart9 = echarts.init(document.getElementById(id))
     var series = []
     for (var i = 0; i < data.length; i++) {
@@ -704,7 +704,7 @@ function rendMultiLineChart (id, xAxisData, data, title) {
         name: data[i].name,
         type: 'line',
         data: data[i].data,
-        animation:false,
+        animation: false,
         symbolSize: 10,
         lineStyle: {
           width: 2
@@ -764,7 +764,7 @@ function rendMultiLineChart (id, xAxisData, data, title) {
     chart9.setOption(option)
   }
 
- 
+
 }
 // 雷达图
 function rendRadarChart (id, data) {
@@ -911,6 +911,7 @@ function rendSingleLineChart2 (id, xAxisData, data) {
     ]
   }
   chart11.setOption(option)
+  return chart11
 
 }
 /**
