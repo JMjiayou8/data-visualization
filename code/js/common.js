@@ -521,10 +521,11 @@ function rendPicBarChart (id, yAxisData, data, width) {
 // 目标用户ARPU值分布分析
 function rendAssessPie (id, data, title) {
   if (document.getElementById(id)) {
-    let width = parseFloat(getComputedStyle(document.getElementById(id)).width);
+    var width = parseFloat(getComputedStyle(document.getElementById(id)).width);
     var center = ['25%', '45%']//饼图中心点位置
     var radius1 = ['20%', '62%'], radius2 = ['64%', '65%'];//饼图半径
     var legendX = 'right', legendY = 'center';//图例位置
+    var width = parseFloat(getComputedStyle(document.getElementById(id)).width);
     if (width < 520) {//图形宽度临界值
       center = ['50%', '25%']
       legendX = 'center'; legendY = '50%'
@@ -628,7 +629,10 @@ function rendAssessPie (id, data, title) {
 function rendSingleBarChart2 (id, xAxisData, data, title) {
   if (document.getElementById(id)) {
     var chart8 = echarts.init(document.getElementById(id))
-    // $('#' + id).width(width + 'px')
+    var width = parseFloat(getComputedStyle(document.getElementById(id)).width);
+    if (width < 520) {//图形宽度临界值
+      $('#' + id).height('400px')
+    }
     var option = {
       color: ['#e38bb8'],
       title: getTitleConfig(title),
@@ -691,8 +695,8 @@ function rendSingleBarChart2 (id, xAxisData, data, title) {
       ]
     }
     chart8.setOption(option)
+    chart8.resize()
   }
-
 }
 // 目标用户年龄段分布分析
 function rendMultiLineChart (id, xAxisData, data, title) {
