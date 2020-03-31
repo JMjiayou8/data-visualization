@@ -1,5 +1,6 @@
 ## 数据可视化静态页面
-
+> 2019
+##### code
 - strategy:策略总览
 - strategyAnalysis:策略分析
 - strategyPreview:策略预演
@@ -13,3 +14,7 @@
 - configProduct:产品配置页面
 - intelligentRecommend:智能推荐
 - recommendList:推荐清单查询
+
+> 2020
+##### code
+- console:控制台

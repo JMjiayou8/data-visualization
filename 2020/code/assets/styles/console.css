@@ -1,0 +1,39 @@
+.console-page{
+
+}
+.active-wrap-part{
+  border-radius: 10px;
+  margin-bottom: 10px;
+  padding: 20px 10px;
+}
+.active-wrap-part .num{
+  font-size: 22px;
+  color: #c30621;
+}
+.active-wrap-part.whole{
+  text-align: center;
+}
+.active-wrap-part.whole p{
+  display: inline-block;
+}
+.active-wrap-part.half{
+  text-align: left;
+}
+.active-wrap-part.half .text{
+  margin-bottom: 10px;
+}
+.active-wrap-part .layui-progress{
+  width: 85%;
+  margin-top: 10px;
+  position: relative;
+}
+.active-wrap-part .layui-progress-bar{
+  background: #f04040;
+}
+.active-wrap-part .progress-text{
+  position: absolute;
+  top: -8px;
+  right: -50px;
+  color: #f04040;
+  font-weight: bold;
+}
