@@ -1,87 +1,101 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>工作台</title>
-    <meta name="renderer" content="webkit" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
-    <link
-      rel="stylesheet"
-      href="./js/third/layui-v2.5.5/layui/css/layui.css"
-      media="all"
-    />
-    <link rel="stylesheet" href="./assets/styles/common.css" />
-    <link rel="stylesheet" href="./assets/styles/console.css" />
-    <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
-    <!--[if lt IE 9]>
+
+<head>
+  <meta charset="utf-8" />
+  <title>工作台</title>
+  <meta name="renderer" content="webkit" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <link rel="stylesheet" href="./js/third/layui-v2.5.5/layui/css/layui.css" media="all" />
+  <link rel="stylesheet" href="./assets/styles/common.css" />
+  <link rel="stylesheet" href="./assets/styles/console.css" />
+  <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+  <!--[if lt IE 9]>
       <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
       <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="normal-page console-page">
-      <div class="page-body clearfix ">
-        <div class="layui-row layui-col-space10">
-          <div class="layui-col-md4 layui-col-sm4 layui-col-xs12">
-            <div class="normal-part ">
-              <div class="console-part-title">
-                <div>
-                  <span></span>
-                  <span>活跃触点</span>
-                </div>
+</head>
+<body>
+  <div class="normal-page console-page">
+    <div class="page-body clearfix ">
+      <div class="layui-row layui-col-space10">
+        <div class="layui-col-md4 layui-col-sm4 layui-col-xs12">
+          <div class="normal-part ">
+            <div class="console-part-title clearfix">
+              <div class="fl">
+                <span class="title-icon"></span>
+                <span class="title">活跃触点</span>
               </div>
-
-              <div id="activeWrap"></div>
+              <div class="fr">
+                <span class="num">7</span>
+                <span>个</span>
+              </div>
+            </div>
+            <div id="activeWrap"></div>
+          </div>
+        </div>
+        <div class="layui-col-md8 layui-col-sm8 layui-col-xs12">
+          <div class="normal-part clearfix chart-wrap">
+            <div class="layui-row layui-col-space10">
+              <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <p class="part-title">日任务量</p>
+                <div id="chart1" style="width: 100%;height: 190px;"></div>
+              </div>
+              <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <p class="part-title">月任务量</p>
+                <div id="chart2" style="width: 100%;height: 190px;"></div>
+              </div>
+              <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <p class="part-title">日触达率</p>
+                <div id="chart3" style="width: 100%;height: 190px;"></div>
+              </div>
+              <div class="layui-col-md6 layui-col-sm6 layui-col-xs6">
+                <p class="part-title">月触达率</p>
+                <div id="chart4" style="width: 100%;height: 190px;"></div>
+              </div>
             </div>
           </div>
-          <div class="layui-col-md8 layui-col-sm8 layui-col-xs12">
-            <div class="normal-part clearfix ">
-              任务量
-            </div>
-          </div>
-          <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
-            <div class="normal-part clearfix ">
-              单触点分析
-            </div>
+        </div>
+        <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
+          <div class="normal-part clearfix ">
+            单触点分析
           </div>
         </div>
       </div>
     </div>
-    <!-- 活跃触点 -->
-    <script id="activeHtml" type="text/html">
-        <div class="layui-row layui-col-space10">
-        {{#  layui.each(d.configMap, function(index, item){ }}
-        <div class="layui-col-md{{item.span}} layui-col-sm{{item.span}}  ">
-          {{#  if(item.type=='num'){ }}
-          <div class="active-wrap-part {{item.span==12?'whole':'half'}}" style="background:{{item.color}}">
-              <p class="text">{{item.text}}:</p>
-              <p>
-                <span  class="num">{{d.data[item.key]}}</span>
-                <span class="unit">个</span>
-              </p>
-          </div>
-          {{#  }else{ }}
-          <div class="active-wrap-part {{item.type}}" style="background:{{item.color}}">
-            <p class="text">{{item.text}}:</p>
-            <div class="layui-progress" >
-              <div class="layui-progress-bar" lay-percent="{{d.data[item.key]}}%">
-              </div>
-              <span class="progress-text">{{d.data[item.key]}}%</span>
-            </div>
-          </div>
-          {{# } }}
+  </div>
+  <!-- 活跃触点 -->
+  <script id="activeHtml" type="text/html">
+    <div class="layui-row layui-col-space10">
+      {{#  layui.each(d.configMap, function(index, item){ }}
+      <div class="layui-col-md{{item.span}} layui-col-sm{{item.span}}  ">
+        {{#  if(item.type=='num'){ }}
+        <div class="active-wrap-part {{item.span==12?'whole':'half'}}" style="background:{{item.color}}">
+          <p class="text">{{item.text}}:</p>
+          <p>
+            <span class="num">{{d.data[item.key]}}</span>
+            <span class="unit">个</span>
+          </p>
         </div>
-      {{#  }); }}
+        {{#  }else{ }}
+        <div class="active-wrap-part {{item.type}}" style="background:{{item.color}}">
+          <p class="text">{{item.text}}:</p>
+          <div class="layui-progress">
+            <div class="layui-progress-bar" lay-percent="{{d.data[item.key]}}%">
+            </div>
+            <span class="progress-text">{{d.data[item.key]}}%</span>
+          </div>
+        </div>
+        {{# } }}
       </div>
-    </script>
-    <script
-      src="./js/third/layui-v2.5.5/layui/layui.js"
-      charset="utf-8"
-    ></script>
-    <script src="./js/console.js"></script>
-  </body>
+      {{#  }); }}
+    </div>
+  </script>
+  <script src="./js/third/jquery-3.2.1.min.js" charset="utf-8"></script>
+  <script src="./js/third/layui-v2.5.5/layui/layui.js" charset="utf-8"></script>
+  <script src="./js/third/echarts/echarts.min.js"></script>
+  <script src="./js/console.js"></script>
+</body>
+
 </html>

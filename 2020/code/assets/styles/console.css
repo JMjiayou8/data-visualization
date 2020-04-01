@@ -1,39 +1,77 @@
-.console-page{
-
+.console-part-title {
+  border-bottom: 1px solid #e7f1fe;
+  padding-bottom: 5px;
+  line-height: 24px;
 }
-.active-wrap-part{
+
+.console-part-title .title-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  background: url('../images/console-icon.png') no-repeat center/cover;
+}
+
+.console-part-title .title {
+  font-size: 16px;
+  color: #c30621;
+  font-weight: bold;
+}
+
+.console-part-title .num {
+  font-size: 24px;
+  color: #c30621;
+  font-weight: bold;
+}
+
+.active-wrap-part {
   border-radius: 10px;
-  margin-bottom: 10px;
+  margin-top: 10px;
   padding: 20px 10px;
 }
-.active-wrap-part .num{
+
+.active-wrap-part .num {
   font-size: 22px;
   color: #c30621;
 }
-.active-wrap-part.whole{
+
+.active-wrap-part.whole {
   text-align: center;
 }
-.active-wrap-part.whole p{
+
+.active-wrap-part.whole p {
   display: inline-block;
 }
-.active-wrap-part.half{
+
+.active-wrap-part.half {
   text-align: left;
 }
-.active-wrap-part.half .text{
+
+.active-wrap-part.half .text {
   margin-bottom: 10px;
 }
-.active-wrap-part .layui-progress{
+
+.active-wrap-part .layui-progress {
   width: 85%;
   margin-top: 10px;
   position: relative;
 }
-.active-wrap-part .layui-progress-bar{
+
+.active-wrap-part .layui-progress-bar {
   background: #f04040;
 }
-.active-wrap-part .progress-text{
+
+.active-wrap-part .progress-text {
   position: absolute;
   top: -8px;
   right: -50px;
   color: #f04040;
   font-weight: bold;
+}
+
+.chart-wrap {}
+
+.chart-wrap .part-title {
+  font-weight: bold;
+  border-bottom: 1px solid #e1e1e1;
+  padding-bottom: 10px;
 }
