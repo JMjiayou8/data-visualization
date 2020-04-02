@@ -16,6 +16,7 @@
       <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
+
 <body>
   <div class="normal-page console-page">
     <div class="page-body clearfix ">
@@ -58,8 +59,12 @@
           </div>
         </div>
         <div class="layui-col-md12 layui-col-sm12 layui-col-xs12">
-          <div class="normal-part clearfix ">
-            单触点分析
+          <div class="normal-part clearfix singleChnl-wrap">
+            <p class="part-title"> 单触点分析</p>
+            <div class="part-body">
+              <div id="paramWrap"></div>
+              <table class="layui-hide" id="table1"></table>
+            </div>
           </div>
         </div>
       </div>
@@ -88,6 +93,50 @@
           </div>
         </div>
         {{# } }}
+      </div>
+      {{#  }); }}
+    </div>
+  </script>
+  <!-- 触点 -->
+  <script id="paramHtml" type="text/html">
+    <div class="clearfix">
+      <ul class="chnlList clearfix fl">
+        {{#  layui.each(d.chnlList[d.chnlGroupIndex], function(index, item){ }}
+        <li class="fl chnlItem {{d.currentChnl==item.id?'active':''}}" onclick="setCurrentChnl('{{item.id}}')">
+          {{item.text}}</li>
+        {{# }); }}
+      </ul>
+      <div class="fl">
+        <button type="button"
+          class="layui-btn layui-btn-sm layui-btn-primary {{d.chnlGroupIndex==0?'layui-disabled':''}}"
+          onclick="changeGroupIndex('prev')">
+          <i class="layui-icon layui-icon-prev"></i>
+        </button>
+        <button type="button"
+          class="layui-btn layui-btn-sm layui-btn-primary  {{(d.chnlGroupIndex==d.groupNum-1)?'layui-disabled':''}}"
+          onclick="changeGroupIndex('next')">
+          <i class="layui-icon layui-icon-next"></i>
+        </button>
+      </div>
+      <div class=" search-input-wrap fr">
+        <input id="searchName" type="text" placeholder="搜索触点" autocomplete="off" class="layui-input search-input" />
+        <i class="layui-icon layui-icon-search" onclick="searchChnl()"></i>
+      </div>
+    </div>
+    <div class="layui-row param-wrap">
+      {{#  layui.each(d.paramMap, function(index, item){ }}
+      <div class="layui-col-md2 layui-col-sm2">
+        <div class="param-wrap-part ">
+          <p class="text">{{item.text}}</p>
+          <p>
+            <span class="num">{{d.paramData[item.key]}}</span>
+            {{#  if(item.type=='num'){ }}
+            <span class="unit">个</span>
+            {{#  }else{ }}
+            <span class="unit">%</span>
+            {{# } }}
+          </p>
+        </div>
       </div>
       {{#  }); }}
     </div>

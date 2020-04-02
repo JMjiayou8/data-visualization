@@ -75,3 +75,71 @@
   border-bottom: 1px solid #e1e1e1;
   padding-bottom: 10px;
 }
+
+.param-wrap {
+  border: 1px solid #e1e1e1;
+  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.param-wrap-part {
+  border-right: 1px solid #e1e1e1;
+  padding: 0 10px;
+}
+
+.param-wrap .layui-col-md2:last-child .param-wrap-part {
+  border: 0;
+}
+
+.param-wrap-part .text {
+  color: #333;
+  font-size: 14px;
+}
+
+.param-wrap-part .num {
+  color: #f0912d;
+  font-size: 16px;
+}
+
+.param-wrap-part .unit {
+  color: #333;
+  font-size: 12px;
+}
+
+
+.chnlItem {
+  background: #f1f1f1;
+  padding: 5px 30px;
+  border-radius: 0 10px 0 0;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.chnlItem.active {
+  background: #f0912d;
+  color: #fff;
+}
+
+.search-input-wrap {
+  position: relative;
+  width: 200px;
+  margin-top: 5px;
+}
+
+.search-input-wrap i {
+  position: absolute;
+  right: 10px;
+  top: 6px;
+  cursor: pointer;
+}
+
+.layui-btn[disabled] {
+  cursor: not-allowed;
+  background: #f1f1f1;
+}
+.singleChnl-wrap .part-title{
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 20px;
+  margin-bottom: 20px;
+}

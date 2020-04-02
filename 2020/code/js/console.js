@@ -1,8 +1,8 @@
-layui.use(['form', 'layedit','laytpl', 'element'], function () {
-  var form = layui.form,
-    layer = layui.layer,
-    laytpl = layui.laytpl,
+layui.use([ 'laytpl', 'table', 'element'], function () {
+  var  laytpl = layui.laytpl,
+    table = layui.table,
     element = layui.element;
+  var chnlList = [], chnlData = [], groupNum = 0, chnlGroupIndex = 0, currentChnl = {}, paramData = {};
   // 活跃触点
   function renderActiveWrap () {
     var activeData = {
@@ -65,6 +65,7 @@ layui.use(['form', 'layedit','laytpl', 'element'], function () {
       element.render()
     });
   }
+
   // 任务量饼图
   function rendPieChart1 (id, data, totalNum) {
     var chart1 = echarts.init(document.getElementById(id))
@@ -75,7 +76,7 @@ layui.use(['form', 'layedit','laytpl', 'element'], function () {
         x: 'center',
         y: 'bottom',
         icon: 'circle',
-    
+
       },
       series: [
         {
@@ -162,7 +163,7 @@ layui.use(['form', 'layedit','laytpl', 'element'], function () {
         label: {
           show: true,
           position: 'outside',
-          fontSize: 18,
+          fontSize: 12,
           color: '#555',
           formatter: function (params) {
             var percent = 0;
@@ -252,9 +253,142 @@ layui.use(['form', 'layedit','laytpl', 'element'], function () {
     }];
     rendPieChart2('chart4', data4)
   }
-
+  //处理触点数据
+  function getChnlArr (data) {
+    var arr = [];
+    var group = Math.ceil(data.length / 7);
+    for (var i = 0; i < group; i++) {
+      arr.push(data.slice(i * 7, (i + 1) * 7))
+    }
+    return arr
+  }
+  //点击单个触点
+  window.setCurrentChnl = function (id) {
+    currentChnl = id;
+    getChnlData()
+  }
+  
+  // 切换触点组
+  window.changeGroupIndex = function (tag) {
+    if (tag == 'prev' && chnlGroupIndex > 0) {
+      chnlGroupIndex--;
+      renderSingleChnlWrap()
+    }
+    if (tag == 'next' && chnlGroupIndex < chnlData.length - 1) {
+      chnlGroupIndex++;
+      renderSingleChnlWrap()
+    }
+  }
+  // 搜索触点
+  window.searchChnl = function () {
+    for (var i = 0; i < groupNum; i++) {
+      var item = chnlData[i]
+      for (var j = 0; j < item.length; j++) {
+        if ($('#searchName').val() == item[j].text) {
+          currentChnl = item[j].id
+          chnlGroupIndex = i;
+          getChnlData()
+          return
+        }
+      }
+    }
+  }
+  //获取触点列表数据
+  function getChnlArrData () {
+    $.ajax({
+      url: '/mockData/chnl.json',
+      success: function (res) {
+        chnlList = res;
+        chnlData = getChnlArr(chnlList);
+        groupNum = chnlData.length;
+        chnlGroupIndex = 0;
+        currentChnl = chnlList[0].id;
+        getChnlData()
+      }
+    })
+  }
+  //获取总览数据和表格数据
+  function getChnlData () {
+    $.ajax({
+      url: '/mockData/param.json',
+      data: {
+        chnlId: currentChnl
+      },
+      success: function (res) {
+        paramData = res;
+        table.render({
+          elem: '#table1',
+          url: '/mockData/table.json',
+          where: {
+            chnlId: currentChnl
+          },
+          cols: [[
+            { field: 'param1', title: '地市' },
+            { field: 'param2', title: '日任务量' },
+            { field: 'param3', title: '月任务量' },
+            { field: 'param4', title: '日触达量' },
+            { field: 'param5', title: '月触达量', },
+            {
+              field: 'param6', title: '触达率', templet: function (d) {
+                return d.param6 + '%'
+              }
+            },
+          ]],
+          page: {
+            layout: ['prev', 'page', 'next', 'skip'], //自定义分页布局
+            theme: '#f0912d',
+          }
+        });
+        renderSingleChnlWrap()
+      }
+    })
+  }
+  // 单触点区域
+  function renderSingleChnlWrap () {
+    var renderData = {
+      paramMap: [
+        {
+          key: 'param1',
+          text: '当月活动数',
+          type: 'num'
+        },
+        {
+          key: 'param2',
+          text: '日任务量',
+          type: 'num'
+        }, {
+          key: 'param3',
+          text: '月任务量',
+          type: 'num'
+        }, {
+          key: 'param4',
+          text: '日触达量',
+          type: 'num'
+        }, {
+          key: 'param5',
+          text: '月触达量',
+          type: 'num'
+        }, {
+          key: 'param6',
+          text: '触达率',
+          type: 'per'
+        }
+      ],
+      chnlList: chnlData,
+      groupNum: chnlData.length,
+      chnlGroupIndex: chnlGroupIndex,
+      currentChnl: currentChnl,
+      paramData: paramData
+    }
+    var getTpl = paramHtml.innerHTML, wrap = document.getElementById('paramWrap');
+    laytpl(getTpl).render(renderData, function (html) {
+      wrap.innerHTML = html;
+      element.render()
+    });
+  }
   $(function () {
     renderActiveWrap()
     renderChart()
+    getChnlArrData()
   })
 })
