@@ -163,6 +163,24 @@ body {
   position: relative;
 }
 
+.page-title-wrap .page-sub-title {
+  font-size: 14px;
+  line-height: 18px;
+  color: #666;
+  margin-bottom: 10px;
+  margin-left: 20px;
+}
+.chart-part-title span{
+  vertical-align: text-top;
+}
+.chart-part-title .ask-icon{
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background: url('../images/askquestion.png') no-repeat center;
+  margin-left: 10px;
+  cursor: pointer;
+}
 .page-title::before {
   content: '';
   width: 16px;
@@ -200,6 +218,7 @@ body {
   width: 49%;
   margin-left: 0;
 }
+
 .normal-part.per22 {
   width: 49%;
   margin-left: 2%;
@@ -223,8 +242,9 @@ body {
 .normal-part.per2:nth-child(2n+1) {
   margin-left: 2%;
 }
+
 .normal-part.per22:nth-child(2n+1) {
-  margin-left:0;
+  margin-left: 0;
 }
 
 .normal-part.per3:nth-child(3n+1),
@@ -735,13 +755,16 @@ body {
   color: rgb(37, 99, 225);
   text-decoration: underline;
 }
-.product-num .big-text{
+
+.product-num .big-text {
   text-decoration: none;
   color: rgb(228, 95, 110);
 }
-.product-num .big-text:hover{
+
+.product-num .big-text:hover {
   opacity: .6;
 }
+
 .similarity-part.active {
   background: rgb(237, 151, 61);
   color: #fff;
@@ -890,7 +913,7 @@ body {
 }
 
 /* 指标配置 */
-.config-part-list .normal-part{
+.config-part-list .normal-part {
   display: none;
 }
 
@@ -904,12 +927,13 @@ body {
   box-sizing: border-box;
   text-align: left;
   padding: 0 20px;
-  background:#fff url('../icons/down.png') no-repeat 90px center;
+  background: #fff url('../icons/down.png') no-repeat 90px center;
   background-size: 12px;
 }
-.config-top.active{
+
+.config-top.active {
   border-bottom-color: #fff;
-  background:#fff url('../icons/up.png') no-repeat 90px center;
+  background: #fff url('../icons/up.png') no-repeat 90px center;
   background-size: 12px;
 }
 
@@ -926,7 +950,8 @@ body {
   border-radius: 5px 0 5px 5px;
   box-sizing: border-box;
 }
-.config-list::before{
+
+.config-list::before {
   content: '';
   position: absolute;
   right: 0;
