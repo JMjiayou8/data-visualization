@@ -683,37 +683,63 @@ body {
 /**************************************** 策略评估页面 ****************************************/
 
 
-.assess-top .normal-part {
+.assess-top .top-part {
   height: 150px;
-  background: url('../images/top-bg.png') no-repeat center/cover;
   color: #fff;
   font-size: 16px;
   text-align: center;
+  padding: 0;
 }
 
 .top-item-first {
   width: 30%;
-  border-right: 1px solid #fff;
+  background-color: #e88974;
+  padding: 1%;
+  border-radius: 5px;
+  box-shadow: 0px 2px 3px 0px rgba(158, 158, 158, 0.6);
+
 }
 
 .top-right-list {
-  width: 68%;
+  width: 65%;
+  background-color: #78a6ea;
+  padding: 1%;
+  border-radius: 5px;
+  box-shadow: 0px 2px 3px 0px rgba(158, 158, 158, 0.6);
+
+}
+.top-right-list .top-item{
+  border-right: 1px solid #fff;
+  
+}
+.top-right-list .top-item:last-child{
+  border:0;
+  
 }
 
 .top-text-1 {
   height: 70px;
   line-height: 70px;
+  color: #d0e3fe;
 }
 
 .top-text-2 {
   height: 36px;
   line-height: 36px;
+  color: #d0e3fe;
+}
+.top-item-first .top-text-1{
+  color: #f4d6d6;
+}
+.top-item-first .top-text-2{
+  color: #f4d6d6;
 }
 
 .assess-top .top-item {
-  float: right;
+  float: left;
   width: 33%;
 }
+
 
 .max-text {
   font-size: 65px;
@@ -725,6 +751,7 @@ body {
   display: inline-block;
   line-height: 36px;
   margin: 0 5px;
+  color:#fff;
 }
 
 .similarity-part {
@@ -766,7 +793,7 @@ body {
 }
 
 .similarity-part.active {
-  background: rgb(237, 151, 61);
+  background: #6cc0b5;
   color: #fff;
 }
 
@@ -984,4 +1011,11 @@ body {
 .config-item button:disabled {
   background: #e3e3e3;
   border-color: #e3e3e3;
+}
+
+
+.layui-layer-tips i.layui-layer-TipsB, .layui-layer-tips i.layui-layer-TipsT{
+  border-left-style: solid!important;
+  border-left-color: #000!important;
+  border-right: 0!important;
 }
