@@ -169,7 +169,9 @@ body {
   color: #666;
   margin-bottom: 10px;
   margin-left: 20px;
+  width: 80%;
 }
+
 .chart-part-title span{
   vertical-align: text-top;
 }
@@ -940,12 +942,19 @@ body {
 }
 
 /* 指标配置 */
+.config-wrap{
+  position: relative;
+}
 .config-part-list .normal-part {
   display: none;
+  /* width: 16%; */
+  /* max-width: 120px; */
 }
 
 .config-top {
-  width: 120px;
+  /* width: 120px; */
+  width: 100%;
+  max-width: 120px;
   font-size: 14px;
   line-height: 32px;
   border-radius: 5px;
@@ -954,13 +963,13 @@ body {
   box-sizing: border-box;
   text-align: left;
   padding: 0 20px;
-  background: #fff url('../icons/down.png') no-repeat 90px center;
+  background: #fff url('../icons/down.png') no-repeat 90% center;
   background-size: 12px;
 }
 
 .config-top.active {
   border-bottom-color: #fff;
-  background: #fff url('../icons/up.png') no-repeat 90px center;
+  background: #fff url('../icons/up.png') no-repeat 90% center;
   background-size: 12px;
 }
 
@@ -968,7 +977,7 @@ body {
   position: absolute;
   top: 32px;
   right: 0;
-  max-width: 290px;
+  min-width: 290px;
   border: 1px solid #ffab0a;
   background: #fff;
   padding: 10px 0;
@@ -983,7 +992,8 @@ body {
   position: absolute;
   right: 0;
   top: -1px;
-  width: 118px;
+  /* width: 118px; */
+  width: 33%;
   height: 1px;
   background: #fff;
 }
