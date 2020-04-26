@@ -867,7 +867,21 @@ body {
   width: 66%;
   margin-left: 1%;
 }
-
+.preview-data-list{
+  position: relative;
+  width:100%;
+}
+.preview-data-list .layui-icon{
+  position: absolute;
+  cursor: pointer;
+  top: 45%;
+}
+.preview-data-list .layui-icon.layui-icon-left{
+ left: 10px;
+}
+.preview-data-list .layui-icon.layui-icon-right{
+  right: 10px;
+}
 .preview-data-list .list-item {
   width: 18%;
   padding: 0 3%;
@@ -881,6 +895,7 @@ body {
 .preview-overview {
   color: #fff;
   font-size: 14px;
+  width: 100%;
 }
 
 .preview-overview .num {
